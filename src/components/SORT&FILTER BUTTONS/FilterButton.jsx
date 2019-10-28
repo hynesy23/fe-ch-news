@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import { Link } from "@reach/router";
+import { navigate } from "@reach/router";
 import styles from "./FilterandSortButton.module.css";
 
 export default class FilterandSortButton extends Component {
@@ -18,7 +18,14 @@ export default class FilterandSortButton extends Component {
 
   handleClick = event => {
     const value = event.target.value;
-    this.setState({ topic: value });
+    console.log(value, "value log");
+    this.setState({ topic: value }, () => {
+      if (value === "all") {
+        navigate(`/articles`);
+      } else {
+        navigate(`/articles/${value}`);
+      }
+    });
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -41,11 +48,14 @@ export default class FilterandSortButton extends Component {
             {topics &&
               topics.map(topic => {
                 return (
+                  // <Link to={`/articles/${topic.slug}`}>
                   <option value={topic.slug} key={topic.slug}>
-                    <Link to={`/articles/${topic.slug}`}>{topic.slug}</Link>
+                    {topic.slug}
                   </option>
+                  // </Link>
                 );
               })}
+            <option value="all">Show All</option>
           </select>
         </label>
       </form>

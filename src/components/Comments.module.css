@@ -1,0 +1,9 @@
+.table {
+  list-style: none;
+}
+
+.tableItem {
+  border: 2px solid rgb(231, 32, 231);
+  margin: 20px;
+  text-align: center;
+}

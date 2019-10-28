@@ -1,30 +1,27 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
+import { Link } from "@reach/router";
 
 export default class SingleUser extends Component {
   state = {
     user: null,
+    articles: [],
     isLoading: true
   };
 
   componentDidMount() {
-    console.log("have i mounted?");
-    api.fetchSingleUser(this.props.username).then(user => {
-      //   console.log(user, "user log");
-      this.setState({ user, isLoading: false });
+    const { username } = this.props;
+    const author = username;
+    const user = api.fetchSingleUser(username);
+    const articles = api.fetchAllArticles(username);
+
+    return Promise.all([user, articles]).then(([user, articles]) => {
+      this.setState({ user, articles, isLoading: false });
     });
   }
 
-  //   componentDidUpdate(prevProps) {
-  //     console.log(this.props.username, "update log");
-  //     if (prevProps.username !== this.props.username) {
-  //       api.fetchSingleUser(this.props.username).then(user => {
-  //         console.log(user, "user log");
-  //       });
-  //     }
-  //   }
   render() {
-    const { user, isLoading } = this.state;
+    const { user, isLoading, articles } = this.state;
     if (isLoading) return <p>Page loading...</p>;
     return (
       <div>
@@ -42,6 +39,19 @@ export default class SingleUser extends Component {
             <h3>User Bio:</h3>
             <p>Hi, I'm {user.name}</p>
           </>
+        )}
+        {user && articles && (
+          <ul>
+            {articles.map(article => {
+              return (
+                <p>
+                  <Link to={`/articles/${article.article_id}`}>
+                    {article.title}
+                  </Link>
+                </p>
+              );
+            })}
+          </ul>
         )}
       </div>
     );

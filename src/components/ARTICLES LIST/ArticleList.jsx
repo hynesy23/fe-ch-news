@@ -13,6 +13,7 @@ export default class ArticleList extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props, "PROPS FROM ART LIST");
     api.fetchAllArticles().then(articles => {
       this.setState({ articles, isLoading: false });
     });
@@ -23,7 +24,8 @@ export default class ArticleList extends Component {
       prevState.topic !== this.state.topic ||
       prevState.sort_by !== this.state.sort_by
     ) {
-      const { topic, sort_by } = this.state;
+      let { topic, sort_by } = this.state;
+      if (topic === "all") topic = undefined;
       return (
         topic !== "Please choose a topic to filter by" &&
         api.fetchAllArticles(topic, sort_by).then(articles => {
@@ -38,7 +40,6 @@ export default class ArticleList extends Component {
   };
 
   sortArticles = sort_by => {
-    console.log(sort_by, "sort by from artList");
     this.setState({ sort_by });
   };
 

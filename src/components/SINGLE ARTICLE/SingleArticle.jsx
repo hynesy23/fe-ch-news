@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
+import Comments from "../Comments";
 
 export default class SingleArticle extends Component {
   state = {
     article: null,
     isLoading: true
-    //comments: []
   };
 
   componentDidMount() {
@@ -34,6 +34,8 @@ export default class SingleArticle extends Component {
           <li>{article.comment_count} comments</li>
           <li>{article.body}</li>
         </ul>
+
+        <Comments article_id={article.article_id} />
       </>
     );
   }
