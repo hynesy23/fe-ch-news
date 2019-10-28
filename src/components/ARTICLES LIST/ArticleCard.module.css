@@ -1,0 +1,25 @@
+.cardTable {
+  list-style-type: none;
+}
+
+.card {
+  border: solid 2px rgb(230, 55, 230);
+  padding: 20px;
+  margin: 5px;
+}
+
+.cardTitle {
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+.cardOther {
+  text-align: center;
+}
+
+.cardBody {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

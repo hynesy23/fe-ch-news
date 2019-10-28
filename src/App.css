@@ -1,22 +1,35 @@
-.App {
-  text-align: center;
+.container {
+  /* margin-left: 30px; */
+  /* width: 100vw;
+  grid-template-columns: 400px auto 150px;
+  grid-template-rows: 1fr 3fr 0.5fr;
+  grid-template-areas: "header header login", "main main comm_list",
+    "main main comm_list", "footer footer footer"; */
 }
 
-.App-logo {
-  height: 40vmin;
+.header {
+  grid-area: header;
+  background: red;
+  width: 400px;
+  height: 90px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.login {
+  grid-area: login;
+  background-color: blue;
 }
 
-.App-link {
-  color: #09d3ac;
+.art_list {
+  grid-area: main;
+  background-color: rgb(51, 255, 0);
+  max-width: 720px;
+}
+
+.comm_list {
+  grid-area: comm_list;
+  background-color: purple;
+}
+
+.footer {
+  grid-area: footer;
 }
