@@ -13,7 +13,7 @@ export default class SingleUser extends Component {
     const { username } = this.props;
     const author = username;
     const user = api.fetchSingleUser(username);
-    const articles = api.fetchAllArticles(username);
+    const articles = api.fetchAllArticles(undefined, undefined, username);
 
     return Promise.all([user, articles]).then(([user, articles]) => {
       this.setState({ user, articles, isLoading: false });
@@ -44,11 +44,11 @@ export default class SingleUser extends Component {
           <ul>
             {articles.map(article => {
               return (
-                <p>
+                <li>
                   <Link to={`/articles/${article.article_id}`}>
                     {article.title}
                   </Link>
-                </p>
+                </li>
               );
             })}
           </ul>

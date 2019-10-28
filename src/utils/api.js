@@ -2,7 +2,11 @@ import axios from "axios";
 
 const baseURL = "https://cillians-server.herokuapp.com/api";
 
-export const fetchAllArticles = async (author, topic, sort_by) => {
+export const fetchAllArticles = async (topic, sort_by, author) => {
+  console.log(topic, "TOPIC");
+  console.log(sort_by, "SORT_BY");
+  console.log(author, "AUTHOR");
+
   return await axios
     .get(`${baseURL}/articles`, {
       params: { topic: topic, sort_by: sort_by, author: author }
@@ -13,6 +17,7 @@ export const fetchAllArticles = async (author, topic, sort_by) => {
 };
 
 export const fetchArticleById = async article_id => {
+  console.log("hello");
   return await axios
     .get(`${baseURL}/articles/${article_id}`)
     .then(({ data }) => data.article);

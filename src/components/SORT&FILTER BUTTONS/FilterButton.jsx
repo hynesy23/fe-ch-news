@@ -3,7 +3,7 @@ import * as api from "../../utils/api";
 import { navigate } from "@reach/router";
 import styles from "./FilterandSortButton.module.css";
 
-export default class FilterandSortButton extends Component {
+export default class FilterButton extends Component {
   state = {
     topics: [],
     topic: "",
@@ -21,9 +21,9 @@ export default class FilterandSortButton extends Component {
     console.log(value, "value log");
     this.setState({ topic: value }, () => {
       if (value === "all") {
-        navigate(`/articles`);
+        navigate(`/articles/topic`);
       } else {
-        navigate(`/articles/${value}`);
+        navigate(`/articles/topic/${value}`);
       }
     });
   };

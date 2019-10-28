@@ -10,7 +10,7 @@ import SingleUser from "./components/SINGLE USER/SingleUser";
 import NavBar from "./components/NavBar";
 import SingleArticle from "./components/SINGLE ARTICLE/SingleArticle";
 import TopicsList from "./components/TopicsList";
-import FilterandSortButton from "./components/SORT&FILTER BUTTONS/FilterButton";
+import FilterButton from "./components/SORT&FILTER BUTTONS/FilterButton";
 
 function App() {
   return (
@@ -22,11 +22,11 @@ function App() {
         <ArticleList path="/" />
         <ArticleList path="/articles" className="art_list" />
         <TopicsList path="/topics" />
-        <ArticleList path="/articles/:slug" />
+        <ArticleList path="/articles/topic/:slug" />
         <UsersList path="/community" />
         <SingleUser path="/community/:username" />
         <SingleArticle path="/articles/:article_id" />
-        <FilterandSortButton path="/articles/:slug" />
+        {/* <FilterButton path="/articles/:slug" /> */}
       </Router>
       <Footer className="footer" />
     </div>
