@@ -46,3 +46,15 @@
   height: 100px;
   width: 100px;
 }
+
+.leftthumb {
+  margin-right: 10px;
+}
+
+.rightthumb {
+  margin-left: 10px;
+}
+
+.votesp {
+  margin: 0;
+}

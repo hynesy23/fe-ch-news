@@ -51,10 +51,14 @@ export const fetchCommentsByArticleId = async (article_id, sort_by) => {
 };
 
 export const insertComment = (comment, article_id) => {
-  console.log(comment, "comment in api");
   return axios
     .post(`${baseURL}/articles/${article_id}/comments`, comment)
     .then(({ data }) => {
       return data.comment;
     });
+};
+
+export const voteChange = (id, numOfVotes) => {
+  console.log(numOfVotes);
+  return axios.patch(`${baseURL}/comments/${id}`, { inc_votes: numOfVotes });
 };

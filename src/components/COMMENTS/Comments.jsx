@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Popup from "reactjs-popup";
 import AddComment from "./AddComment";
 import { Link } from "@reach/router";
+import Voting from "../Voting";
+import CommentsList from "./CommentsList";
 
 export default class Comments extends Component {
   state = {
@@ -67,11 +69,10 @@ export default class Comments extends Component {
     const { comments, isLoading, submitted } = this.state;
     if (isLoading) return <p>Comments loading...</p>;
     return (
-      <div>
-        <h1>LOOK AT ME I'M LOADS OF COMMENTS</h1>
+      <section>
         {comments && (
           <ul className={styles.table}>
-            {user && !submitted && (
+            {user && (
               <Popup
                 trigger={
                   <button>
@@ -85,32 +86,17 @@ export default class Comments extends Component {
                 }
                 position="right center"
               >
-                <AddComment user={user} addComment={this.addComment} />
+                {!submitted && (
+                  <AddComment user={user} addComment={this.addComment} />
+                )}
               </Popup>
             )}
             <SortButton comments={comments} sortFunction={this.sortFunction} />
-            {comments.map(comment => {
-              return (
-                <div className={styles.tableItem} key={comment.comment_id}>
-                  <li>
-                    <Link to={`/community/${comment.author}`}>
-                      {comment.author}
-                    </Link>
-                  </li>
-                  <li>
-                    <Moment fromNow>{comment.created_at}</Moment>
-                  </li>
-                  <li>
-                    <FontAwesomeIcon icon="arrow-up" />
-                    {comment.votes}
-                  </li>
-                  <li>{comment.body}</li>
-                </div>
-              );
-            })}
+
+            <CommentsList comments={comments} user={user} />
           </ul>
         )}
-      </div>
+      </section>
     );
   }
 }
