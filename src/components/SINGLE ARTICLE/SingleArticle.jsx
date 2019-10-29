@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import Comments from "../Comments";
+import Comments from "../COMMENTS/Comments";
 import { Link } from "@reach/router";
 
 export default class SingleArticle extends Component {
@@ -19,6 +19,7 @@ export default class SingleArticle extends Component {
 
   render() {
     const { article, isLoading } = this.state;
+    const { user } = this.props;
     if (isLoading) return <p>Page loading...</p>;
     return (
       <>
@@ -37,7 +38,7 @@ export default class SingleArticle extends Component {
           <li>{article.comment_count} comments</li>
           <li>{article.body}</li>
         </ul>
-        <Comments article_id={article.article_id} />
+        <Comments article_id={article.article_id} user={user} />
       </>
     );
   }

@@ -1,9 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styles from "./Header.module.css";
 
-export default function Login() {
-  return (
-    <section className="login">
-      <h1>Hi I'm a login section</h1>
-    </section>
-  );
+export default class Login extends Component {
+  render() {
+    return (
+      <section className="login">
+        <FontAwesomeIcon icon="user" size="4x" className={styles.login} />
+      </section>
+    );
+  }
 }

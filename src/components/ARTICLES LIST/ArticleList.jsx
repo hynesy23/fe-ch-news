@@ -28,9 +28,14 @@ export default class ArticleList extends Component {
       if (topic === "all") topic = undefined;
       return (
         topic !== "Please choose a topic to filter by" &&
-        api.fetchAllArticles(topic, sort_by).then(articles => {
-          this.setState({ articles });
-        })
+        api
+          .fetchAllArticles(topic, sort_by)
+          .then(articles => {
+            this.setState({ articles });
+          })
+          .catch(err => {
+            console.dir(err);
+          })
       );
     }
   }
@@ -39,7 +44,7 @@ export default class ArticleList extends Component {
     this.setState({ topic });
   };
 
-  sortArticles = sort_by => {
+  sortFunction = sort_by => {
     this.setState({ sort_by });
   };
 
@@ -54,7 +59,7 @@ export default class ArticleList extends Component {
           <h1>HI IM THE ARTICLE LIST</h1>
         </header>
         <FilterButton getTopicToFilterBy={this.getTopicToFilterBy} />
-        <SortButton sortArticles={this.sortArticles} />
+        <SortButton sortFunction={this.sortFunction} />
         <ArticleCard articles={articles} />
         <button>See More Articles</button>
       </main>

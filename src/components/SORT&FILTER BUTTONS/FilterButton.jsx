@@ -21,7 +21,7 @@ export default class FilterButton extends Component {
     console.log(value, "value log");
     this.setState({ topic: value }, () => {
       if (value === "all") {
-        navigate(`/articles/topic`);
+        navigate(`/articles`);
       } else {
         navigate(`/articles/topic/${value}`);
       }

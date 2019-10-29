@@ -10,13 +10,10 @@
 .header {
   grid-area: header;
   background: red;
-  width: 400px;
-  height: 90px;
 }
 
 .login {
   grid-area: login;
-  background-color: blue;
 }
 
 .art_list {
@@ -32,4 +29,20 @@
 
 .footer {
   grid-area: footer;
+}
+
+.comment-icon {
+  padding-right: 5px;
+}
+
+.up-arrow-icon {
+  padding-right: 5px;
+}
+
+.comment-alt-icon {
+}
+
+.text-box {
+  height: 100px;
+  width: 100px;
 }

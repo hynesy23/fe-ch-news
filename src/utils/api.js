@@ -41,8 +41,20 @@ export const fetchSingleUser = async username => {
   });
 };
 
-export const fetchCommentsByArticleId = async article_id => {
+export const fetchCommentsByArticleId = async (article_id, sort_by) => {
+  console.log(sort_by, "sort log from api");
   return await axios
-    .get(`${baseURL}/articles/${article_id}/comments`)
+    .get(`${baseURL}/articles/${article_id}/comments`, {
+      params: { sort_by: sort_by }
+    })
     .then(({ data }) => data.comments);
+};
+
+export const insertComment = (comment, article_id) => {
+  console.log(comment, "comment in api");
+  return axios
+    .post(`${baseURL}/articles/${article_id}/comments`, comment)
+    .then(({ data }) => {
+      return data.comment;
+    });
 };

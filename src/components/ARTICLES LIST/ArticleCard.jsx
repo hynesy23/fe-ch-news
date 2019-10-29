@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./ArticleCard.module.css";
 import { Link } from "@reach/router";
+import Moment from "react-moment";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function ArticleCard({ articles }) {
   return (
@@ -19,11 +21,18 @@ export default function ArticleCard({ articles }) {
                   {article.author}
                 </Link>
               </li>
-              <li className={styles.cardOther}>{article.created_at}</li>
               <li className={styles.cardOther}>
-                {article.comment_count} comments
+                <Moment fromNow>{article.created_at}</Moment>
               </li>
-              <li className={styles.cardOther}> {article.votes} votes</li>
+              <li className={styles.cardOther}>
+                <FontAwesomeIcon icon="comments" className="comment-icon" />
+                {article.comment_count}
+              </li>
+              <li className={styles.cardOther}>
+                {" "}
+                <FontAwesomeIcon icon="arrow-up" className="up-arrow-icon" />
+                {article.votes}
+              </li>
               <li className={styles.cardBody}>{article.body}</li>
             </div>
           );
