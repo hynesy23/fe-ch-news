@@ -9,7 +9,8 @@ import {
   faArrowUp,
   faUser,
   faCommentAlt,
-  faTrash
+  faTrash,
+  faUserCircle
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -21,5 +22,6 @@ library.add(
   faArrowUp,
   faUser,
   faCommentAlt,
-  faTrash
+  faTrash,
+  faUserCircle
 );

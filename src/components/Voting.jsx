@@ -21,10 +21,9 @@ export default class Voting extends Component {
         .voteChange(id, numOfVotes, marker)
         .then(() => {})
         .catch(err => {
-          console.dir(err);
           this.setState({
             voteCount: 0,
-            err: { status: err.status, msg: err.response.data.msg }
+            err: { status: err.response.status, msg: err.response.data.msg }
           });
         });
     }
@@ -32,7 +31,7 @@ export default class Voting extends Component {
 
   render() {
     const { votes } = this.props;
-    const { voteCount } = this.state;
+    const { voteCount, err } = this.state;
     return (
       <>
         <p className="votesp">
@@ -54,6 +53,7 @@ export default class Voting extends Component {
             size="lg"
           />
         </form>
+        {err && <p>{err.status}: Oops, an error occurred!</p>}
       </>
     );
   }

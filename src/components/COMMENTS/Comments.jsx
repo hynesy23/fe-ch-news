@@ -13,7 +13,8 @@ export default class Comments extends Component {
     comments: [],
     isLoading: true,
     sort_by: "",
-    submitted: false
+    submitted: false,
+    err: null
   };
 
   componentDidMount() {
@@ -49,16 +50,19 @@ export default class Comments extends Component {
   addComment = comment => {
     const { article_id } = this.props;
 
-    api.insertComment(comment, article_id).then(comment => {
-      this.setState(currentState => {
-        if (comment.body.length) {
-          return {
-            comments: [comment, ...currentState.comments],
-            submitted: true
-          };
-        }
-      });
-    });
+    api
+      .insertComment(comment, article_id)
+      .then(comment => {
+        this.setState(currentState => {
+          if (comment.body.length) {
+            return {
+              comments: [comment, ...currentState.comments],
+              submitted: true
+            };
+          }
+        });
+      })
+      .catch(err => console.dir(err));
   };
 
   deleteComment = comment_id => {
@@ -80,23 +84,26 @@ export default class Comments extends Component {
         {comments && (
           <ul className={styles.table}>
             {user && (
-              <Popup
-                trigger={
-                  <button>
-                    <FontAwesomeIcon
-                      icon="comment-alt"
-                      size="2x"
-                      onClick={this.addComment}
-                      className="comment-alt-icon"
-                    />
-                  </button>
-                }
-                position="right center"
-              >
-                {!submitted && (
-                  <AddComment user={user} addComment={this.addComment} />
-                )}
-              </Popup>
+              <>
+                <p>Add a comment: </p>
+                <Popup
+                  trigger={
+                    <button>
+                      <FontAwesomeIcon
+                        icon="comment-alt"
+                        size="2x"
+                        onClick={this.addComment}
+                        className="comment-alt-icon"
+                      />
+                    </button>
+                  }
+                  position="right center"
+                >
+                  {!submitted && (
+                    <AddComment user={user} addComment={this.addComment} />
+                  )}
+                </Popup>
+              </>
             )}
             <SortButton comments={comments} sortFunction={this.sortFunction} />
 

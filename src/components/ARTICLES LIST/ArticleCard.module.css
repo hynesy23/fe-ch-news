@@ -1,6 +1,8 @@
 .cardTable {
   list-style-type: none;
   padding: 0;
+  margin: auto;
+  max-width: 720px;
 }
 
 .card {

@@ -53,17 +53,23 @@ export default class SingleArticle extends Component {
             {article.votes + votes}
           </li> */}
           <li className={styles.list_item}>
-            <FontAwesomeIcon icon="comments" className="comment-icon" />
+            <FontAwesomeIcon
+              icon="comments"
+              className="comment-icon"
+              size="lg"
+            />
             {article.comment_count}
           </li>
           <li className={styles.art_body}>{article.body}</li>
         </ul>
-        <Voting
-          id={article.article_id}
-          marker="articles"
-          votes={article.votes}
-          handleArticleVotes={this.handleVotes}
-        />
+        {user && (
+          <Voting
+            id={article.article_id}
+            marker="articles"
+            votes={article.votes}
+            handleArticleVotes={this.handleVotes}
+          />
+        )}
         <Comments article_id={article.article_id} user={user} />
       </>
     );

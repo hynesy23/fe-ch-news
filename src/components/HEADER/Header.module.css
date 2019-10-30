@@ -12,6 +12,8 @@ p {
 .login {
   display: block;
   float: right;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
 .login_icon {

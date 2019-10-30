@@ -19,7 +19,7 @@
 .art_list {
   grid-area: main;
   background-color: rgb(51, 255, 0);
-  max-width: 720px;
+  margin: auto;
 }
 
 .comm_list {
@@ -48,7 +48,7 @@
 }
 
 .thumbs-div {
-  padding: 5px 0 5px 0;
+  padding: 5px 0 5px 5px;
 }
 
 .leftthumb {
@@ -63,7 +63,7 @@
 
 .votesp {
   margin: 0;
-  padding: 0;
+  padding: 5px;
 }
 
 .icon_button {

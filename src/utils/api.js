@@ -59,7 +59,7 @@ export const insertComment = (comment, article_id) => {
 };
 
 export const voteChange = (id, numOfVotes, marker) => {
-  return axios.patch(`${baseURL}/${marker}s/${id}`, { inc_votes: numOfVotes });
+  return axios.patch(`${baseURL}/${marker}/${id}`, { inc_votes: numOfVotes });
 };
 
 export const removeComment = comment_id => {
