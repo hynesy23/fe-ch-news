@@ -1,0 +1,22 @@
+.article_title {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.article_list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.article_author {
+  text-align: center;
+}
+
+.list_item {
+  display: inline;
+  padding: 10px;
+}
+
+.art_body {
+  margin: 20px;
+}

@@ -47,14 +47,25 @@
   width: 100px;
 }
 
+.thumbs-div {
+  padding: 5px 0 5px 0;
+}
+
 .leftthumb {
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .rightthumb {
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .votesp {
   margin: 0;
+  padding: 0;
+}
+
+.icon_button {
+  cursor: pointer;
 }

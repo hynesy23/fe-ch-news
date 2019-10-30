@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
 import { Link } from "@reach/router";
+import LoadingPage from "../LoadingPage";
 
 export default class SingleUser extends Component {
   state = {
@@ -22,7 +23,7 @@ export default class SingleUser extends Component {
 
   render() {
     const { user, isLoading, articles } = this.state;
-    if (isLoading) return <p>Page loading...</p>;
+    if (isLoading) return <LoadingPage />;
     return (
       <div>
         <h1>HELLO I'M A SINGLE USER</h1>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
 import UserCard from "./UserCard";
+import LoadingPage from "../LoadingPage";
 
 export default class UsersList extends Component {
   state = {
@@ -15,7 +16,7 @@ export default class UsersList extends Component {
 
   render() {
     const { users, isLoading } = this.state;
-    if (isLoading) return <p>Loading page...</p>;
+    if (isLoading) return <LoadingPage />;
     return (
       <>
         <h1>HELLO FROM USER LIST</h1>

@@ -3,6 +3,7 @@ import * as api from "../../utils/api";
 import ArticleCard from "./ArticleCard";
 import FilterButton from "../SORT&FILTER BUTTONS/FilterButton";
 import SortButton from "../SORT&FILTER BUTTONS/SortButton";
+import LoadingPage from "../LoadingPage";
 
 export default class ArticleList extends Component {
   state = {
@@ -13,7 +14,6 @@ export default class ArticleList extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props, "PROPS FROM ART LIST");
     api.fetchAllArticles().then(articles => {
       this.setState({ articles, isLoading: false });
     });
@@ -51,7 +51,7 @@ export default class ArticleList extends Component {
   render() {
     const { isLoading, articles } = this.state;
     if (isLoading) {
-      return <p>Page Loading...</p>;
+      return <LoadingPage />;
     }
     return (
       <main className="art_list">

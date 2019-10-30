@@ -4,39 +4,54 @@ import * as api from "../utils/api";
 
 export default class Voting extends Component {
   state = {
-    voteCount: 0
+    voteCount: 0,
+    isClicked: false,
+    err: null
   };
 
   handleVote = numOfVotes => {
-    console.log("votinggg");
-    const { id } = this.props;
-    this.setState(({ voteCount }) => {
-      return { voteCount: voteCount + numOfVotes };
-    });
-    api.voteChange(id, numOfVotes);
+    const { id, marker } = this.props;
+    console.log(id, marker);
+    const { isClicked } = this.state;
+    if (!isClicked) {
+      this.setState(({ voteCount }) => {
+        return { voteCount: voteCount + numOfVotes, isClicked: true };
+      });
+      api
+        .voteChange(id, numOfVotes, marker)
+        .then(() => {})
+        .catch(err => {
+          console.dir(err);
+          this.setState({
+            voteCount: 0,
+            err: { status: err.status, msg: err.response.data.msg }
+          });
+        });
+    }
   };
 
   render() {
     const { votes } = this.props;
     const { voteCount } = this.state;
-    console.log(voteCount, "vote count");
     return (
       <>
         <p className="votesp">
           <FontAwesomeIcon icon="arrow-up" />
           {votes + voteCount}
         </p>
-        <form>
+        <form className="thumbs-div">
           <FontAwesomeIcon
             icon="thumbs-up"
             className="leftthumb"
             onClick={() => this.handleVote(1)}
+            size="lg"
           />
 
           <FontAwesomeIcon
             icon="thumbs-down"
-            className="righthumb"
+            className="rightthumb"
             onClick={() => this.handleVote(-1)}
+            size="lg"
           />
         </form>
       </>

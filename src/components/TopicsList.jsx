@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import { Link } from "@reach/router";
+import LoadingPage from "./LoadingPage";
 
 export default class TopicsList extends Component {
   state = {
@@ -16,7 +17,7 @@ export default class TopicsList extends Component {
   }
   render() {
     const { topics, isLoading } = this.state;
-    if (isLoading) return <p>Topics loading...</p>;
+    if (isLoading) return <LoadingPage />;
     return (
       <ul>
         {topics &&

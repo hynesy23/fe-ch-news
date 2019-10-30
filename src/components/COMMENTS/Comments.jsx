@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import * as api from "../../utils/api";
 import styles from "./Comments.module.css";
 import SortButton from "../SORT&FILTER BUTTONS/SortButton";
-import Moment from "react-moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Popup from "reactjs-popup";
 import AddComment from "./AddComment";
-import { Link } from "@reach/router";
-import Voting from "../Voting";
 import CommentsList from "./CommentsList";
+import LoadingPage from "../LoadingPage";
 
 export default class Comments extends Component {
   state = {
@@ -20,7 +18,6 @@ export default class Comments extends Component {
 
   componentDidMount() {
     const { article_id, sort_by } = this.props;
-    console.log(sort_by, "sort by from mount");
     api
       .fetchCommentsByArticleId(article_id, sort_by)
       .then(comments => {
@@ -64,10 +61,20 @@ export default class Comments extends Component {
     });
   };
 
+  deleteComment = comment_id => {
+    this.setState(currentState => {
+      return {
+        comments: currentState.comments.filter(comment => {
+          return comment.comment_id !== comment_id;
+        })
+      };
+    });
+  };
+
   render() {
     const { user } = this.props;
     const { comments, isLoading, submitted } = this.state;
-    if (isLoading) return <p>Comments loading...</p>;
+    if (isLoading) return <LoadingPage />;
     return (
       <section>
         {comments && (
@@ -93,7 +100,11 @@ export default class Comments extends Component {
             )}
             <SortButton comments={comments} sortFunction={this.sortFunction} />
 
-            <CommentsList comments={comments} user={user} />
+            <CommentsList
+              deleteComment={this.deleteComment}
+              comments={comments}
+              user={user}
+            />
           </ul>
         )}
       </section>

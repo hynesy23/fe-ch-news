@@ -2,11 +2,17 @@ import React, { Component } from "react";
 import * as api from "../../utils/api";
 import Comments from "../COMMENTS/Comments";
 import { Link } from "@reach/router";
+import styles from "./SingleArticle.module.css";
+import Moment from "react-moment";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Voting from "../Voting";
+import LoadingPage from "../LoadingPage";
 
 export default class SingleArticle extends Component {
   state = {
     article: null,
-    isLoading: true
+    isLoading: true,
+    votes: 0
   };
 
   componentDidMount() {
@@ -17,27 +23,47 @@ export default class SingleArticle extends Component {
     });
   }
 
+  handleVotes = votes => {
+    console.log(votes, "votes log");
+    this.setState({ votes });
+  };
+
   render() {
-    const { article, isLoading } = this.state;
+    const { article, isLoading, votes } = this.state;
     const { user } = this.props;
-    if (isLoading) return <p>Page loading...</p>;
+    if (isLoading) return <LoadingPage />;
     return (
       <>
-        <h1>I'M A SINGLE ARTICLE</h1>
-        <ul>
+        <ul className={styles.article_list}>
           <li>
-            <h3>{article.title}</h3>
+            <h1 className={styles.article_title}>{article.title}</h1>
           </li>
-          <li>
+          <li className={styles.article_author}>
             <Link to={`/community/${article.author}`}>{article.author}</Link>
           </li>
-          <li>{article.created_at}</li>
-          <li>filed to: {article.topic.toUpperCase()}</li>
+          <li className={styles.list_item}>
+            <Moment fromNow>{article.created_at}</Moment>
+          </li>
+          <li className={styles.list_item}>
+            filed to: {article.topic.toUpperCase()}
+          </li>
 
-          <li>{article.votes} votes</li>
-          <li>{article.comment_count} comments</li>
-          <li>{article.body}</li>
+          {/* <li className={styles.list_item}>
+            <FontAwesomeIcon icon="arrow-up" className="up-arrow-icon" />
+            {article.votes + votes}
+          </li> */}
+          <li className={styles.list_item}>
+            <FontAwesomeIcon icon="comments" className="comment-icon" />
+            {article.comment_count}
+          </li>
+          <li className={styles.art_body}>{article.body}</li>
         </ul>
+        <Voting
+          id={article.article_id}
+          marker="articles"
+          votes={article.votes}
+          handleArticleVotes={this.handleVotes}
+        />
         <Comments article_id={article.article_id} user={user} />
       </>
     );
