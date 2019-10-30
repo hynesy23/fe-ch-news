@@ -1,47 +1,58 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link, navigate } from "@reach/router";
 
 export default class LoginPage extends Component {
   state = {
-    username: "",
+    user: "",
     isLoggedIn: false
   };
 
   handleChange = event => {
-    const username = event.target.value;
-    this.setState({ username, isLoggedIn: true });
+    const user = event.target.value;
+    this.setState({ user });
   };
 
   handleSubmit = event => {
-    const { username } = this.state;
+    const { user } = this.state;
     event.preventDefault();
-    this.props.handleLogin(username);
+    this.props.handleLogin(user);
+    navigate(`/login/${user}`);
+    this.setState({ isLoggedIn: true });
   };
 
   render() {
-    const { isLoggedIn, username } = this.state;
+    const { user, isLoggedIn } = this.state;
+
     return (
       <>
-        <FontAwesomeIcon icon="user-circle" />
-        {isLoggedIn ? (
-          <p>Welcome back, {username}</p>
-        ) : (
-          <>
-            <h1>Welcome to the login page</h1>
+        {isLoggedIn && (
+          <div>
             <p>
-              PLease note you will need to login to submit articles or comments,
-              or should you wish to vote on any said articles or comments.
+              Welcome back, {user}. To view your profile page, just click on the
+              link below. Otherwise, choose an area from the navbar above, or
+              click on HOME below to go to our homepage.
             </p>
-            <p>Please login by completing the form below</p>
-            <form onSubmit={this.handleSubmit}>
-              <label>
-                Username:
-                <input type="text" onChange={this.handleChange} />
-              </label>
-              <button>login</button>
-            </form>
-          </>
+            <p>
+              <Link to={`/login/${user}`}>View my profile</Link>
+            </p>
+          </div>
         )}
+        <div>
+          <h1>Welcome to the login page</h1>
+          <p>
+            PLease note you will need to login to submit articles or comments,
+            or should you wish to vote or comment.
+          </p>
+          <p>Please login by entering you username below.</p>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Username:
+              <input type="text" onChange={this.handleChange} />
+            </label>
+            <button>login</button>
+          </form>
+        </div>
+        )
       </>
     );
   }

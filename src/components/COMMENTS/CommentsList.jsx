@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import Popup from "reactjs-popup";
 import { Link } from "@reach/router";
 import styles from "./Comments.module.css";
 import Moment from "react-moment";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Voting from "../Voting";
 import DeleteComment from "./DeleteComment";
 import ErrMessage from "../ErrMessage";
@@ -46,7 +44,7 @@ export default class CommentsList extends Component {
                 marker="comments"
               />
             )}
-            {user && user.username === comment.author && (
+            {user && user === comment.author && (
               <DeleteComment
                 comment={comment}
                 deleteComment={deleteComment}

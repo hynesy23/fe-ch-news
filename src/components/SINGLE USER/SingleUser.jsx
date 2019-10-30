@@ -12,7 +12,6 @@ export default class SingleUser extends Component {
 
   componentDidMount() {
     const { username } = this.props;
-    const author = username;
     const user = api.fetchSingleUser(username);
     const articles = api.fetchAllArticles(undefined, undefined, username);
 

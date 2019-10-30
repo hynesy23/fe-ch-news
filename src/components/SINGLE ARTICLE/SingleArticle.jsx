@@ -29,7 +29,7 @@ export default class SingleArticle extends Component {
   };
 
   render() {
-    const { article, isLoading, votes } = this.state;
+    const { article, isLoading } = this.state;
     const { user } = this.props;
     if (isLoading) return <LoadingPage />;
     return (
@@ -47,11 +47,6 @@ export default class SingleArticle extends Component {
           <li className={styles.list_item}>
             filed to: {article.topic.toUpperCase()}
           </li>
-
-          {/* <li className={styles.list_item}>
-            <FontAwesomeIcon icon="arrow-up" className="up-arrow-icon" />
-            {article.votes + votes}
-          </li> */}
           <li className={styles.list_item}>
             <FontAwesomeIcon
               icon="comments"
