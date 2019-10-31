@@ -1,0 +1,26 @@
+.user_list {
+  text-align: center;
+  list-style-type: none;
+  margin-left: 350px;
+}
+
+.user_card {
+  width: 500px;
+  border-bottom: 1px purple solid;
+  padding: 10px;
+  text-align: center;
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 360px) {
+  .user_list {
+    text-align: center;
+    list-style-type: none;
+  }
+
+  .user_card {
+    border-bottom: 1px purple solid;
+    padding: 10px;
+    text-align: center;
+  }
+}

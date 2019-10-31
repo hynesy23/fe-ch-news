@@ -39,7 +39,7 @@ export default class FilterButton extends Component {
     const { topics } = this.state;
     return (
       <form>
-        <label htmlFor="">
+        <label>
           Filter list by
           <select className={styles.button} onClick={this.handleClick}>
             <option selected disabled>
@@ -48,11 +48,9 @@ export default class FilterButton extends Component {
             {topics &&
               topics.map(topic => {
                 return (
-                  // <Link to={`/articles/${topic.slug}`}>
                   <option value={topic.slug} key={topic.slug}>
                     {topic.slug}
                   </option>
-                  // </Link>
                 );
               })}
             <option value="all">Show All</option>

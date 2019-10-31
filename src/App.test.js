@@ -9,15 +9,15 @@ it("renders without crashing", () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-describe("getUsernamesFromUsers", () => {
+describe("findCorrectUser", () => {
   it("Returns empty array is passed empty array", () => {
     const input = [];
     const actualResult = getUsernamesFromUsers(input);
     const expectedResult = [];
     expect(actualResult).toEqual(expectedResult);
   });
-  it("If given array of one object with key of username, returns username value in new array", () => {
-    const input = [
+  it("If given array of one object with key of username and a username as arguments, returns object if username key matches given username", () => {
+    const inputArray = [
       {
         username: "tickle122",
         avatar_url:
@@ -25,12 +25,18 @@ describe("getUsernamesFromUsers", () => {
         name: "Tom Tickle"
       }
     ];
-    const actualResult = getUsernamesFromUsers(input);
-    const expectedResult = ["tickle122"];
+    const inputUsername = "tickle122";
+    const actualResult = getUsernamesFromUsers(inputArray, inputUsername);
+    const expectedResult = {
+      username: "tickle122",
+      avatar_url:
+        "https://www.spiritsurfers.net/monastery/wp-content/uploads/_41500270_mrtickle.jpg",
+      name: "Tom Tickle"
+    };
     expect(actualResult).toEqual(expectedResult);
   });
-  it.only("If given array of multiple objects,returns username values in new array", () => {
-    const input = [
+  it.only("If given array of multiple objects,returns first object whose username is equal to given username", () => {
+    const inputArray = [
       {
         username: "tickle122",
         avatar_url:
@@ -55,13 +61,14 @@ describe("getUsernamesFromUsers", () => {
         name: "Peter Messy"
       }
     ];
-    const actualResult = getUsernamesFromUsers(input);
-    const expectedResult = [
-      "tickle122",
-      "grumpy19",
-      "happyamy2016",
-      "cooljmessy"
-    ];
+    const inputUsername = "tickle122";
+    const actualResult = getUsernamesFromUsers(inputArray, inputUsername);
+    const expectedResult = {
+      username: "tickle122",
+      avatar_url:
+        "https://www.spiritsurfers.net/monastery/wp-content/uploads/_41500270_mrtickle.jpg",
+      name: "Tom Tickle"
+    };
     expect(actualResult).toEqual(expectedResult);
   });
 });

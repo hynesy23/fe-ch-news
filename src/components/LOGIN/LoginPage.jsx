@@ -4,7 +4,8 @@ import { Link, navigate } from "@reach/router";
 export default class LoginPage extends Component {
   state = {
     user: "",
-    isLoggedIn: false
+    isLoggedIn: false,
+    failedLogIn: false
   };
 
   handleChange = event => {
@@ -19,12 +20,13 @@ export default class LoginPage extends Component {
     if (bool) {
       navigate(`/login/${user}`);
       this.setState({ isLoggedIn: true });
+    } else {
+      this.setState({ failedLogIn: true, user: "" });
     }
   };
 
   render() {
-    const { user, isLoggedIn } = this.state;
-    const { failedLogIn } = this.props;
+    const { user, isLoggedIn, failedLogIn } = this.state;
 
     return (
       <>
@@ -50,7 +52,7 @@ export default class LoginPage extends Component {
           <form onSubmit={this.handleSubmit}>
             <label>
               Username:
-              <input type="text" onChange={this.handleChange} />
+              <input type="text" onChange={this.handleChange} value={user} />
             </label>
             <button>login</button>
           </form>

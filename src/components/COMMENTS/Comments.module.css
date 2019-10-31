@@ -2,13 +2,19 @@
   list-style: none;
   border: 1px solid rgb(231, 32, 231);
   padding: 0;
-  margin-right: 30px;
-  margin-left: 30px;
+  margin: auto;
   text-align: center;
+  width: 60%;
 }
 
 .tableItem {
-  border: 2px solid rgb(231, 32, 231);
-  margin: 20px;
+  border-bottom: 2px solid rgb(231, 32, 231);
+  text-align: center;
+  padding: 20px;
+}
+
+.tableItem:hover {
+  border-bottom: 2px solid rgb(231, 32, 231);
+  background-color: rgb(221, 216, 216);
   text-align: center;
 }

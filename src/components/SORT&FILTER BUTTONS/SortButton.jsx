@@ -1,10 +1,9 @@
 import React from "react";
+import styles from "./FilterandSortButton.module.css";
 
 export default function SortButton({ sortFunction, comments }) {
   const handleClick = event => {
     const sort_by = event.target.value;
-    //sortArticles(sort_by);
-    //sortComments(sort_by);
     sortFunction(sort_by);
   };
 

@@ -14,7 +14,7 @@ export default class UsersList extends Component {
     return (
       <>
         <h1>HELLO FROM USER LIST</h1>
-        <UserCard users={users} />;
+        <UserCard users={users} />
       </>
     );
   }

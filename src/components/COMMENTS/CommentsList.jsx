@@ -25,32 +25,33 @@ export default class CommentsList extends Component {
     if (err) return <ErrMessage err={this.state.err} />;
 
     const { comments, user, deleteComment } = this.props;
-    console.log(user, "user from comments");
     return comments.map(comment => {
       return (
         <ul className={styles.table} key={comment.comment_id}>
-          <li>
-            <Link to={`/community/${comment.author}`}>{comment.author}</Link>
-          </li>
-          <li>
-            <Moment fromNow>{comment.created_at}</Moment>
-          </li>
-          <li>{comment.body}</li>
-          <li>
-            {user && user !== comment.author && (
-              <Voting
-                id={comment.comment_id}
-                votes={comment.votes}
-                marker="comments"
-              />
-            )}
-            {user && user === comment.author && (
-              <DeleteComment
-                comment={comment}
-                deleteComment={deleteComment}
-                errorFunction={this.errorFunction}
-              />
-            )}
+          <li className={styles.tableItem}>
+            <li>
+              <Link to={`/community/${comment.author}`}>{comment.author}</Link>
+            </li>
+            <li>
+              <Moment fromNow>{comment.created_at}</Moment>
+            </li>
+            <li>{comment.body}</li>
+            <li>
+              {user && user.username !== comment.author && (
+                <Voting
+                  id={comment.comment_id}
+                  votes={comment.votes}
+                  marker="comments"
+                />
+              )}
+              {user && user.username === comment.author && (
+                <DeleteComment
+                  comment={comment}
+                  deleteComment={deleteComment}
+                  errorFunction={this.errorFunction}
+                />
+              )}
+            </li>
           </li>
         </ul>
       );

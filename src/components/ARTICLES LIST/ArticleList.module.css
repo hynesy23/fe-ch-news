@@ -1,3 +1,7 @@
+h1 {
+  text-align: center;
+}
+
 .cardTable {
   list-style-type: none;
   padding: 0;
@@ -6,13 +10,15 @@
 }
 
 .card {
-  border: solid 2px rgb(230, 55, 230);
+  border: solid 2px rgb(6, 44, 114);
+  border-radius: 5px;
   padding: 20px;
   margin: 5px;
 }
 
 .cardTitle {
   font-weight: bold;
+  font-size: 20px;
   text-align: center;
   padding: 10px;
 }
@@ -25,4 +31,8 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.button_div {
+  text-align: center;
 }

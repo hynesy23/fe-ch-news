@@ -9,10 +9,17 @@ export default class LoginIcon extends Component {
     return (
       <>
         {isLoggedIn ? (
-          <Link to={`login/${user}`}>
-            <FontAwesomeIcon
-              icon="user-circle"
-              size="4x"
+          // <Link to={`login/${user}`}>
+          //   <FontAwesomeIcon
+          //     icon="user-circle"
+          //     size="4x"
+          //     className={styles.login}
+          //   />
+          // </Link>
+          <Link to={`login/${user.username}`}>
+            <img
+              src={user.avatar_url}
+              alt="User profile pic"
               className={styles.login}
             />
           </Link>

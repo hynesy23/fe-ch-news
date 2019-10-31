@@ -7,6 +7,7 @@ import Moment from "react-moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Voting from "../Voting";
 import LoadingPage from "../LoadingPage";
+import coding from "../../IMAGES/coding.jpeg";
 
 export default class SingleArticle extends Component {
   state = {
@@ -39,11 +40,12 @@ export default class SingleArticle extends Component {
             <h1 className={styles.article_title}>{article.title}</h1>
           </li>
           <li className={styles.article_author}>
-            <Link to={`/community/${article.author}`}>{article.author}</Link>
+            <Link to={`/community/${article.author}`}>{article.author}</Link>{" "}
+            <em>
+              <Moment fromNow>{article.created_at}</Moment>
+            </em>
           </li>
-          <li className={styles.list_item}>
-            <Moment fromNow>{article.created_at}</Moment>
-          </li>
+
           <li className={styles.list_item}>
             filed to: {article.topic.toUpperCase()}
           </li>
@@ -55,14 +57,18 @@ export default class SingleArticle extends Component {
             />
             {article.comment_count}
           </li>
+          <li>
+            <img src={coding} alt="coding" />
+          </li>
           <li className={styles.art_body}>{article.body}</li>
         </ul>
-        {user && (
+        {user && user.username !== article.author && (
           <Voting
             id={article.article_id}
             marker="articles"
             votes={article.votes}
             handleArticleVotes={this.handleVotes}
+            className={styles.voting}
           />
         )}
         <Comments article_id={article.article_id} user={user} />

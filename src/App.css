@@ -1,35 +1,44 @@
 .container {
-  /* margin-left: 30px; */
-  /* width: 100vw;
-  grid-template-columns: 400px auto 150px;
-  grid-template-rows: 1fr 3fr 0.5fr;
-  grid-template-areas: "header header login", "main main comm_list",
-    "main main comm_list", "footer footer footer"; */
+  grid-template-columns: 5fr 2fr;
+  grid-template-rows: 150px auto 50px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  grid-template-areas:
+    "header header"
+    "main  main"
+    "footer  footer";
+
+  padding: 0;
 }
 
 .header {
   grid-area: header;
-  background: red;
+  background: rgb(148, 205, 243);
+
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 70px;
+  grid-template-areas: "blank title login";
+}
+
+.blank {
+  grid-area: blank;
+}
+
+.title {
+  grid-area: title;
 }
 
 .login {
   grid-area: login;
 }
 
-.invalid {
-  color: red;
-  padding-top: 10px;
-}
-
 .art_list {
   grid-area: main;
-  background-color: rgb(51, 255, 0);
-  margin: auto;
 }
 
-.comm_list {
-  grid-area: comm_list;
-  background-color: purple;
+.community_list {
+  background-color: rgb(7, 5, 116);
 }
 
 .footer {
@@ -38,6 +47,11 @@
 
 .comment-icon {
   padding-right: 5px;
+}
+
+.invalid {
+  color: red;
+  padding-top: 10px;
 }
 
 .up-arrow-icon {
@@ -73,4 +87,14 @@
 
 .icon_button {
   cursor: pointer;
+}
+
+.user_list {
+  list-style-type: none;
+  margin: auto;
+}
+
+.profile_pic {
+  height: 120px;
+  width: 120px;
 }

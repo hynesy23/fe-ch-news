@@ -4,13 +4,10 @@ import * as api from "./utils/api";
 import * as helper from "./utils/helpers";
 import Header from "./components/HEADER/Header";
 import ArticleList from "./components/ARTICLES LIST/ArticleList";
-import Footer from "./components/Footer";
 import { Router } from "@reach/router";
 import UsersList from "./components/USERS LIST/UsersList";
 import SingleUser from "./components/SINGLE USER/SingleUser";
-import NavBar from "./components/NavBar";
 import SingleArticle from "./components/SINGLE ARTICLE/SingleArticle";
-import TopicsList from "./components/TopicsList";
 import LoginPage from "./components/LOGIN/LoginPage";
 import LoggedInPage from "./components/LOGIN/LoggedInPage";
 import LoggedOutPage from "./components/LOGIN/LoggedOutPage";
@@ -27,15 +24,11 @@ class App extends Component {
   handleLogin = username => {
     const { users } = this.state;
 
-    const usernames = helper.getUsernamesFromUsers(users);
-    console.log(usernames, "usernaes");
-    if (usernames.includes(username)) {
-      this.setState(
-        { user: username, isLoggedIn: true, isLoading: false },
-        () => {
-          this.saveData();
-        }
-      );
+    const user = helper.getUsernamesFromUsers(users, username);
+    if (user) {
+      this.setState({ user, isLoggedIn: true, isLoading: false }, () => {
+        this.saveData();
+      });
       return true;
     } else {
       this.setState({ failedLogIn: true });
@@ -54,6 +47,7 @@ class App extends Component {
   };
 
   componentDidMount() {
+    console.log(this.state.user, "user log");
     const loggedInUser = localStorage.getItem("user");
     const parsedUser = JSON.parse(loggedInUser);
     if (loggedInUser) {
@@ -72,31 +66,31 @@ class App extends Component {
     return (
       <div className="container">
         <Header className="header" isLoggedIn={isLoggedIn} user={user} />
-        <NavBar />
+
         <Router>
           {isLoggedIn ? (
             <LoggedInPage
               path="/login/:username"
               user={user}
               handleLogOut={this.handleLogOut}
+              className="login"
             />
           ) : (
             <LoginPage
               path="/login"
               handleLogin={this.handleLogin}
               failedLogIn={failedLogIn}
+              className="login"
             />
           )}
           <LoggedOutPage path="/logout" />
-          <ArticleList path="/" />
+          <ArticleList path="/" className="art_list" />
           <ArticleList path="/articles" className="art_list" />
-          <TopicsList path="/topics" />
-          <ArticleList path="/articles/topic/:slug" />
+          <ArticleList path="/articles/topic/:slug" className="art_list" />
           <UsersList path="/community" users={users} />
           <SingleUser path="/community/:username" />
           <SingleArticle path="/articles/:article_id" user={user} />
         </Router>
-        <Footer className="footer" />
       </div>
     );
   }

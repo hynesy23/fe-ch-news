@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ArticleCard.module.css";
+import styles from "./ArticleList.module.css";
 import { Link } from "@reach/router";
 import Moment from "react-moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,7 +25,11 @@ export default function ArticleCard({ articles }) {
                 <Moment fromNow>{article.created_at}</Moment>
               </li>
               <li className={styles.cardOther}>
-                <FontAwesomeIcon icon="comments" className="comment-icon" />
+                <FontAwesomeIcon
+                  icon="comments"
+                  className="comment-icon"
+                  size="lg"
+                />
                 {article.comment_count}
               </li>
               <li className={styles.cardOther}>

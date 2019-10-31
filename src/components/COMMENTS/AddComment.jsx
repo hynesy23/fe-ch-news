@@ -13,10 +13,9 @@ export default class AddComment extends Component {
 
   handleSubmit = event => {
     const { user } = this.props;
-    console.log(user, "user from add comment");
     const { body } = this.state;
     const comment = {
-      username: user,
+      username: user.username,
       body
     };
     event.preventDefault();

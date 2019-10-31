@@ -37,14 +37,14 @@ export default class SingleUser extends Component {
         {user && (
           <>
             <h3>User Bio:</h3>
-            <p>Hi, I'm {user.name}</p>
+            <p>Hi, I'm {user.username}</p>
           </>
         )}
         {user && articles && (
           <ul>
             {articles.map(article => {
               return (
-                <li>
+                <li key={article.id}>
                   <Link to={`/articles/${article.article_id}`}>
                     {article.title}
                   </Link>

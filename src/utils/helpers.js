@@ -1,11 +1,5 @@
-export const getUsernamesFromUsers = arr => {
+export const getUsernamesFromUsers = (arr, username) => {
   if (!arr.length) return arr;
 
-  const usernames = [];
-
-  arr.forEach(user => {
-    usernames.push(user.username);
-  });
-
-  return usernames;
+ return arr.find(user => user.username === username)
 };

@@ -4,6 +4,7 @@ import ArticleCard from "./ArticleCard";
 import FilterButton from "../SORT&FILTER BUTTONS/FilterButton";
 import SortButton from "../SORT&FILTER BUTTONS/SortButton";
 import LoadingPage from "../LoadingPage";
+import styles from "./ArticleList.module.css";
 
 export default class ArticleList extends Component {
   state = {
@@ -56,11 +57,14 @@ export default class ArticleList extends Component {
     return (
       <main className="art_list">
         <header>
-          <h1>HI IM THE ARTICLE LIST</h1>
+          <h1>ARTICLE LIST</h1>
         </header>
-        <FilterButton getTopicToFilterBy={this.getTopicToFilterBy} />
-        <SortButton sortFunction={this.sortFunction} />
-        <ArticleCard articles={articles} />
+
+        <ul className={styles.button_div}>
+          <FilterButton getTopicToFilterBy={this.getTopicToFilterBy} />
+          <SortButton sortFunction={this.sortFunction} />
+          <ArticleCard articles={articles} />
+        </ul>
         <button>See More Articles</button>
       </main>
     );

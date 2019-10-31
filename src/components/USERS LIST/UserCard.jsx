@@ -1,16 +1,21 @@
 import React from "react";
 import { Link } from "@reach/router";
+import styles from "./UserList.module.css";
 
 export default function UserCard({ users }) {
   return (
     <section>
-      <ul>
+      <ul className={styles.user_list}>
         {users &&
           users.map(user => {
             return (
-              <>
+              <div className={styles.user_card} key={user.username}>
                 <li>
-                  <img src={user.avatar_url} alt="user pic" />
+                  <img
+                    src={user.avatar_url}
+                    alt="user pic"
+                    className="profile_pic"
+                  />
                 </li>
                 <li>
                   <Link to={`/community/${user.username}`}>
@@ -18,7 +23,7 @@ export default function UserCard({ users }) {
                   </Link>
                 </li>
                 <li>{user.name}</li>
-              </>
+              </div>
             );
           })}
       </ul>
