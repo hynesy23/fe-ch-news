@@ -12,12 +12,11 @@ export default class AddComment extends Component {
   };
 
   handleSubmit = event => {
-    const {
-      user: { username }
-    } = this.props;
+    const { user } = this.props;
+    console.log(user, "user from add comment");
     const { body } = this.state;
     const comment = {
-      username,
+      username: user,
       body
     };
     event.preventDefault();

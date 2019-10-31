@@ -21,11 +21,11 @@ export default class CommentsList extends Component {
 
   render() {
     const { err } = this.state;
-    console.log(err, "err from comments");
 
     if (err) return <ErrMessage err={this.state.err} />;
 
     const { comments, user, deleteComment } = this.props;
+    console.log(user, "user from comments");
     return comments.map(comment => {
       return (
         <ul className={styles.table} key={comment.comment_id}>
@@ -37,7 +37,7 @@ export default class CommentsList extends Component {
           </li>
           <li>{comment.body}</li>
           <li>
-            {user && (
+            {user && user !== comment.author && (
               <Voting
                 id={comment.comment_id}
                 votes={comment.votes}

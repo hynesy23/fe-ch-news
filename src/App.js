@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import * as api from "./utils/api";
+import * as helper from "./utils/helpers";
 import Header from "./components/HEADER/Header";
 import ArticleList from "./components/ARTICLES LIST/ArticleList";
 import Footer from "./components/Footer";
@@ -19,41 +20,55 @@ class App extends Component {
     users: [],
     user: null,
     isLoggedIn: false,
-    isLoading: true
+    isLoading: true,
+    failedLogIn: false
   };
 
   handleLogin = username => {
-    const { users, user } = this.state;
-    // Users is array of OBJECTS. Unsure of how to check names of users
-    console.log(this.state.users, "users from app");
-    // Logic to check username entered against usernames in database. If no match, not allowed to log in.
-    this.setState(
-      { user: username, isLoggedIn: true, isLoading: false },
-      () => {
-        this.saveData();
-      }
-    );
+    const { users } = this.state;
+
+    const usernames = helper.getUsernamesFromUsers(users);
+    console.log(usernames, "usernaes");
+    if (usernames.includes(username)) {
+      this.setState(
+        { user: username, isLoggedIn: true, isLoading: false },
+        () => {
+          this.saveData();
+        }
+      );
+      return true;
+    } else {
+      this.setState({ failedLogIn: true });
+    }
+    return false;
   };
 
   handleLogOut = () => {
     this.setState({ user: null, isLoggedIn: false });
+    localStorage.clear();
   };
 
   saveData = () => {
-    const { user, isLoggedIn } = this.state;
+    const { user } = this.state;
     localStorage.setItem("user", JSON.stringify(user));
   };
 
   componentDidMount() {
-    const newUser = localStorage.getItem("user");
-    const parsedUser = JSON.parse(newUser);
-    api.fecthAllUsers().then(users => {
-      this.setState({ users, user: parsedUser, isLoggedIn: true });
-    });
+    const loggedInUser = localStorage.getItem("user");
+    const parsedUser = JSON.parse(loggedInUser);
+    if (loggedInUser) {
+      api.fecthAllUsers().then(users => {
+        this.setState({ users, user: parsedUser, isLoggedIn: true });
+      });
+    } else {
+      api.fecthAllUsers().then(users => {
+        this.setState({ users });
+      });
+    }
   }
 
   render() {
-    const { isLoggedIn, user } = this.state;
+    const { isLoggedIn, user, failedLogIn, users } = this.state;
     return (
       <div className="container">
         <Header className="header" isLoggedIn={isLoggedIn} user={user} />
@@ -69,7 +84,7 @@ class App extends Component {
             <LoginPage
               path="/login"
               handleLogin={this.handleLogin}
-              isLoggedIn={isLoggedIn}
+              failedLogIn={failedLogIn}
             />
           )}
           <LoggedOutPage path="/logout" />
@@ -77,7 +92,7 @@ class App extends Component {
           <ArticleList path="/articles" className="art_list" />
           <TopicsList path="/topics" />
           <ArticleList path="/articles/topic/:slug" />
-          <UsersList path="/community" />
+          <UsersList path="/community" users={users} />
           <SingleUser path="/community/:username" />
           <SingleArticle path="/articles/:article_id" user={user} />
         </Router>

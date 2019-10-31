@@ -15,13 +15,16 @@ export default class LoginPage extends Component {
   handleSubmit = event => {
     const { user } = this.state;
     event.preventDefault();
-    this.props.handleLogin(user);
-    navigate(`/login/${user}`);
-    this.setState({ isLoggedIn: true });
+    const bool = this.props.handleLogin(user);
+    if (bool) {
+      navigate(`/login/${user}`);
+      this.setState({ isLoggedIn: true });
+    }
   };
 
   render() {
     const { user, isLoggedIn } = this.state;
+    const { failedLogIn } = this.props;
 
     return (
       <>
@@ -40,7 +43,7 @@ export default class LoginPage extends Component {
         <div>
           <h1>Welcome to the login page</h1>
           <p>
-            PLease note you will need to login to submit articles or comments,
+            Please note you will need to login to submit articles or comments,
             or should you wish to vote or comment.
           </p>
           <p>Please login by entering you username below.</p>
@@ -51,8 +54,10 @@ export default class LoginPage extends Component {
             </label>
             <button>login</button>
           </form>
+          {failedLogIn && (
+            <p className="invalid">This is an invalid username</p>
+          )}
         </div>
-        )
       </>
     );
   }

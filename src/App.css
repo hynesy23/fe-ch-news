@@ -16,6 +16,11 @@
   grid-area: login;
 }
 
+.invalid {
+  color: red;
+  padding-top: 10px;
+}
+
 .art_list {
   grid-area: main;
   background-color: rgb(51, 255, 0);

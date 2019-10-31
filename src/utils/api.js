@@ -3,10 +3,6 @@ import axios from "axios";
 const baseURL = "https://cillians-server.herokuapp.com/api";
 
 export const fetchAllArticles = async (topic, sort_by, author) => {
-  console.log(topic, "TOPIC");
-  console.log(sort_by, "SORT_BY");
-  console.log(author, "AUTHOR");
-
   return await axios
     .get(`${baseURL}/articles`, {
       params: { topic: topic, sort_by: sort_by, author: author }
@@ -17,7 +13,6 @@ export const fetchAllArticles = async (topic, sort_by, author) => {
 };
 
 export const fetchArticleById = async article_id => {
-  console.log("hello");
   return await axios
     .get(`${baseURL}/articles/${article_id}`)
     .then(({ data }) => data.article);
@@ -42,7 +37,6 @@ export const fetchSingleUser = async username => {
 };
 
 export const fetchCommentsByArticleId = async (article_id, sort_by) => {
-  console.log(sort_by, "sort log from api");
   return await axios
     .get(`${baseURL}/articles/${article_id}/comments`, {
       params: { sort_by: sort_by }
@@ -51,6 +45,7 @@ export const fetchCommentsByArticleId = async (article_id, sort_by) => {
 };
 
 export const insertComment = (comment, article_id) => {
+  console.log(comment, "comment from api");
   return axios
     .post(`${baseURL}/articles/${article_id}/comments`, comment)
     .then(({ data }) => {
