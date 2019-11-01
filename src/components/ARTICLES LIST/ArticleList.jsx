@@ -15,9 +15,14 @@ export default class ArticleList extends Component {
   };
 
   componentDidMount() {
-    api.fetchAllArticles().then(articles => {
-      this.setState({ articles, isLoading: false });
-    });
+    api
+      .fetchAllArticles()
+      .then(articles => {
+        this.setState({ articles, isLoading: false });
+      })
+      .catch(err => {
+        console.log("heelo from art list");
+      });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -35,7 +40,7 @@ export default class ArticleList extends Component {
             this.setState({ articles });
           })
           .catch(err => {
-            console.dir(err);
+            console.log("heelo from update");
           })
       );
     }
@@ -56,10 +61,6 @@ export default class ArticleList extends Component {
     }
     return (
       <main className="art_list">
-        <header>
-          <h1>ARTICLE LIST</h1>
-        </header>
-
         <ul className={styles.button_div}>
           <FilterButton getTopicToFilterBy={this.getTopicToFilterBy} />
           <SortButton sortFunction={this.sortFunction} />

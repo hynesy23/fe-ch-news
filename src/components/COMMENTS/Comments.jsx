@@ -62,7 +62,11 @@ export default class Comments extends Component {
           }
         });
       })
-      .catch(err => console.dir(err));
+      .catch(err => {
+        this.setState({
+          err: { status: err.response.status, msg: err.response.data.msg }
+        });
+      });
   };
 
   deleteComment = comment_id => {
@@ -77,7 +81,7 @@ export default class Comments extends Component {
 
   render() {
     const { user } = this.props;
-    const { comments, isLoading, submitted } = this.state;
+    const { comments, isLoading, submitted, err } = this.state;
     if (isLoading) return <LoadingPage />;
     return (
       <section>
@@ -106,7 +110,11 @@ export default class Comments extends Component {
               </>
             )}
             <SortButton comments={comments} sortFunction={this.sortFunction} />
-
+            {err && (
+              <p className="error_text">
+                {err.status}: Oops, something went wrong
+              </p>
+            )}
             <CommentsList
               deleteComment={this.deleteComment}
               comments={comments}

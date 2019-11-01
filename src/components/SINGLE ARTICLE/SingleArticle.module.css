@@ -22,8 +22,8 @@
 
 .art_body {
   margin: 0 auto;
-  font-size: 15px;
-  width: 650px;
+  font-size: 17px;
+  width: 700px;
 }
 
 @media screen and (max-width: 360px) {
@@ -38,5 +38,5 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  padding-bottom: 20px;
+  padding-bottom: 35px;
 }

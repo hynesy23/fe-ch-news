@@ -12,7 +12,7 @@ export default function Header({ isLoggedIn, user }) {
         <div className="title">
           <h1 className={styles.header}>CH News</h1>
           <p className={styles.trail_tag}>For your essential news...</p>
-          <Navbar className="title" />
+          <Navbar />
         </div>
         <LoginIcon isLoggedIn={isLoggedIn} user={user} className="login" />
       </header>

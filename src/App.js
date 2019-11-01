@@ -11,6 +11,7 @@ import SingleArticle from "./components/SINGLE ARTICLE/SingleArticle";
 import LoginPage from "./components/LOGIN/LoginPage";
 import LoggedInPage from "./components/LOGIN/LoggedInPage";
 import LoggedOutPage from "./components/LOGIN/LoggedOutPage";
+import ErrMessage from "./components/ErrMessage";
 
 class App extends Component {
   state = {
@@ -47,13 +48,15 @@ class App extends Component {
   };
 
   componentDidMount() {
-    console.log(this.state.user, "user log");
     const loggedInUser = localStorage.getItem("user");
     const parsedUser = JSON.parse(loggedInUser);
     if (loggedInUser) {
-      api.fecthAllUsers().then(users => {
-        this.setState({ users, user: parsedUser, isLoggedIn: true });
-      });
+      api
+        .fecthAllUsers()
+        .then(users => {
+          this.setState({ users, user: parsedUser, isLoggedIn: true });
+        })
+        .catch(err => {});
     } else {
       api.fecthAllUsers().then(users => {
         this.setState({ users });
@@ -68,6 +71,7 @@ class App extends Component {
         <Header className="header" isLoggedIn={isLoggedIn} user={user} />
 
         <Router>
+          <ErrMessage default err={{ status: "404", msg: "Route not found" }} />
           {isLoggedIn ? (
             <LoggedInPage
               path="/login/:username"

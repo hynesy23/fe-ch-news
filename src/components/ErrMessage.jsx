@@ -4,8 +4,13 @@ import { Link } from "@reach/router";
 export default function ErrMessage({ err }) {
   return (
     <>
-      <p>{err.status}: Oops, something's went wrong</p>
-      <Link to="/">Go Home</Link>
+      <div className="error">
+        <h1 className="error_text">{err.status}</h1>
+        <p className="error_text">{err.msg}</p>
+      </div>
+      <Link to="/" className="home">
+        Go Home
+      </Link>
     </>
   );
 }

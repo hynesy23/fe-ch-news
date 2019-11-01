@@ -7,7 +7,7 @@ export default class LoginIcon extends Component {
   render() {
     const { isLoggedIn, user } = this.props;
     return (
-      <>
+      <div className={styles.login}>
         {isLoggedIn ? (
           // <Link to={`login/${user}`}>
           //   <FontAwesomeIcon
@@ -22,6 +22,7 @@ export default class LoginIcon extends Component {
               alt="User profile pic"
               className={styles.login}
             />
+            <p className={styles.login_p}>{user.username}</p>
           </Link>
         ) : (
           <section className="login">
@@ -35,7 +36,7 @@ export default class LoginIcon extends Component {
             </Link>
           </section>
         )}
-      </>
+      </div>
     );
   }
 }

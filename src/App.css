@@ -13,7 +13,6 @@
 }
 
 .header {
-  grid-area: header;
   background: rgb(148, 205, 243);
 
   grid-template-columns: 1fr 2fr 1fr;
@@ -97,4 +96,26 @@
 .profile_pic {
   height: 120px;
   width: 120px;
+}
+
+.error {
+  background-color: #fce4e4;
+  border: 1px solid #fcc2c3;
+  padding: 20px 30px;
+  margin-top: 90px;
+}
+
+.error_text {
+  color: #cc0033;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 20px;
+  text-shadow: 1px 1px rgba(250, 250, 250, 0.3);
+  text-align: center;
+  padding: 10px;
+}
+
+a {
+  text-align: center;
 }

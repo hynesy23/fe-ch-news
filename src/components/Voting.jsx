@@ -53,7 +53,9 @@ export default class Voting extends Component {
             size="lg"
           />
         </form>
-        {err && <p>{err.status}: Oops, an error occurred!</p>}
+        {err && (
+          <p className="error_text">{err.status}: Oops, an error occurred!</p>
+        )}
       </>
     );
   }

@@ -6,32 +6,48 @@ import styles from "./SingleArticle.module.css";
 import Moment from "react-moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Voting from "../Voting";
+import ErrMessage from "../ErrMessage";
 import LoadingPage from "../LoadingPage";
 import coding from "../../IMAGES/coding.jpeg";
+import football from "../../IMAGES/football.jpeg";
+import cooking from "../../IMAGES/cooking.jpeg";
 
 export default class SingleArticle extends Component {
   state = {
     article: null,
     isLoading: true,
-    votes: 0
+    votes: 0,
+    err: null,
+    images: {
+      coding,
+      football,
+      cooking
+    }
   };
 
   componentDidMount() {
     const { article_id } = this.props;
-    console.log("mount");
-    api.fetchArticleById(article_id).then(article => {
-      this.setState({ article, isLoading: false });
-    });
+    api
+      .fetchArticleById(article_id)
+      .then(article => {
+        this.setState({ article, isLoading: false });
+      })
+      .catch(err => {
+        this.setState({
+          err: { status: err.response.status, msg: err.response.data.msg }
+        });
+      });
   }
 
   handleVotes = votes => {
-    console.log(votes, "votes log");
     this.setState({ votes });
   };
 
   render() {
-    const { article, isLoading } = this.state;
+    const { article, isLoading, err, images } = this.state;
+    if (images) console.log(images, "IMAGES");
     const { user } = this.props;
+    if (err) return <ErrMessage err={err} />;
     if (isLoading) return <LoadingPage />;
     return (
       <>
@@ -58,7 +74,7 @@ export default class SingleArticle extends Component {
             {article.comment_count}
           </li>
           <li>
-            <img src={coding} alt="coding" />
+            <img src={images[article.topic]} alt="coding" />
           </li>
           <li className={styles.art_body}>{article.body}</li>
         </ul>
