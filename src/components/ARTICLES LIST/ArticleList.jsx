@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import ArticleCard from "./ArticleCard";
+import ArticleCards from "./ArticleCards";
 import FilterButton from "../SORT&FILTER BUTTONS/FilterButton";
 import SortButton from "../SORT&FILTER BUTTONS/SortButton";
 import LoadingPage from "../LoadingPage";
+import ErrMessage from "../ErrMessage";
 import styles from "./ArticleList.module.css";
 
 export default class ArticleList extends Component {
@@ -11,18 +12,12 @@ export default class ArticleList extends Component {
     articles: [],
     isLoading: true,
     topic: "",
-    sort_by: ""
+    sort_by: "",
+    err: null
   };
 
   componentDidMount() {
-    api
-      .fetchAllArticles()
-      .then(articles => {
-        this.setState({ articles, isLoading: false });
-      })
-      .catch(err => {
-        console.log("heelo from art list");
-      });
+    this.getArticles();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -31,20 +26,26 @@ export default class ArticleList extends Component {
       prevState.sort_by !== this.state.sort_by
     ) {
       let { topic, sort_by } = this.state;
-      if (topic === "all") topic = undefined;
-      return (
-        topic !== "Please choose a topic to filter by" &&
-        api
-          .fetchAllArticles(topic, sort_by)
-          .then(articles => {
-            this.setState({ articles });
-          })
-          .catch(err => {
-            console.log("heelo from update");
-          })
-      );
+      this.getArticles(topic, sort_by);
     }
   }
+
+  getArticles = (filter, sort) => {
+    const { topic, sort_by } = this.state;
+    api
+      .fetchAllArticles(topic, sort_by)
+      .then(articles => {
+        this.setState({ articles, isLoading: false });
+      })
+      .catch(err => {
+        this.setState({
+          err: {
+            status: err.response.status,
+            msg: "Oops, looks like something went wrong"
+          }
+        });
+      });
+  };
 
   getTopicToFilterBy = topic => {
     this.setState({ topic });
@@ -55,18 +56,25 @@ export default class ArticleList extends Component {
   };
 
   render() {
-    const { isLoading, articles } = this.state;
+    const { isLoading, articles, err } = this.state;
+    if (err) return <ErrMessage err={err} />;
     if (isLoading) {
       return <LoadingPage />;
     }
     return (
       <main className="art_list">
-        <ul className={styles.button_div}>
-          <FilterButton getTopicToFilterBy={this.getTopicToFilterBy} />
-          <SortButton sortFunction={this.sortFunction} />
-          <ArticleCard articles={articles} />
+        <ul className={styles.button_list}>
+          <li>
+            <FilterButton
+              getTopicToFilterBy={this.getTopicToFilterBy}
+              slug={this.props.slug}
+            />
+          </li>
+          <li>
+            <SortButton sortFunction={this.sortFunction} />
+          </li>
         </ul>
-        <button>See More Articles</button>
+        <ArticleCards articles={articles} />
       </main>
     );
   }

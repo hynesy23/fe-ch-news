@@ -1,11 +1,18 @@
 .user_list {
   text-align: center;
   list-style-type: none;
-  margin-left: 350px;
+}
+
+h1 {
+  padding-left: 50px;
+}
+
+.text {
+  padding-left: 20px;
+  text-align: left;
 }
 
 .user_card {
-  width: 500px;
   border-bottom: 1px purple solid;
   padding: 10px;
   text-align: center;
@@ -16,11 +23,18 @@
   .user_list {
     text-align: center;
     list-style-type: none;
+    padding: 0;
   }
 
   .user_card {
     border-bottom: 1px purple solid;
-    padding: 10px;
     text-align: center;
+    padding: 0;
+  }
+
+  .text {
+    padding-left: 20px;
+    text-align: left;
+    margin-top: 40px;
   }
 }

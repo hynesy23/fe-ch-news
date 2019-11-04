@@ -19,7 +19,8 @@ class App extends Component {
     user: null,
     isLoggedIn: false,
     isLoading: true,
-    failedLogIn: false
+    failedLogIn: false,
+    err: null
   };
 
   handleLogin = username => {
@@ -56,7 +57,14 @@ class App extends Component {
         .then(users => {
           this.setState({ users, user: parsedUser, isLoggedIn: true });
         })
-        .catch(err => {});
+        .catch(err => {
+          this.setState({
+            err: {
+              status: err.response.status,
+              msg: "Oops, looks like something went wrong"
+            }
+          });
+        });
     } else {
       api.fecthAllUsers().then(users => {
         this.setState({ users });
@@ -65,7 +73,8 @@ class App extends Component {
   }
 
   render() {
-    const { isLoggedIn, user, failedLogIn, users } = this.state;
+    const { isLoggedIn, user, failedLogIn, users, err } = this.state;
+    if (err) return <ErrMessage err={err} />;
     return (
       <div className="container">
         <Header className="header" isLoggedIn={isLoggedIn} user={user} />
@@ -87,6 +96,8 @@ class App extends Component {
               className="login"
             />
           )}
+          {/* Tried removing ternary but when url changed to /logout after pressng logout button the 'LoggedInPage' tried to render instead of the LoggedOutPage */}
+
           <LoggedOutPage path="/logout" />
           <ArticleList path="/" className="art_list" />
           <ArticleList path="/articles" className="art_list" />

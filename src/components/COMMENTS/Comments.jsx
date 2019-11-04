@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import * as api from "../../utils/api";
 import styles from "./Comments.module.css";
 import SortButton from "../SORT&FILTER BUTTONS/SortButton";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Popup from "reactjs-popup";
 import AddComment from "./AddComment";
 import CommentsList from "./CommentsList";
 import LoadingPage from "../LoadingPage";
@@ -19,30 +17,31 @@ export default class Comments extends Component {
 
   componentDidMount() {
     const { article_id, sort_by } = this.props;
-    api
-      .fetchCommentsByArticleId(article_id, sort_by)
-      .then(comments => {
-        this.setState({ comments, isLoading: false });
-      })
-      .catch(err => {
-        console.dir(err);
-      });
+    this.getCommentsByArticleId(article_id, sort_by);
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { article_id } = this.props;
     if (prevState.sort_by !== this.state.sort_by) {
-      api
-        .fetchCommentsByArticleId(article_id, this.state.sort_by)
-        .then(comments => {
-          this.setState({ comments, isLoading: false });
-        })
-        .catch(err => {
-          console.dir(err);
-        });
+      this.getCommentsByArticleId(article_id, this.state.sort_by);
     }
   }
-
+  getCommentsByArticleId = (id, sort) => {
+    const { article_id } = this.props;
+    api
+      .fetchCommentsByArticleId(article_id, this.state.sort_by)
+      .then(comments => {
+        this.setState({ comments, isLoading: false });
+      })
+      .catch(err => {
+        this.setState({
+          err: {
+            status: err.response.status,
+            msg: "Oops, looks like something went wrong"
+          }
+        });
+      });
+  };
   sortFunction = sort_by => {
     this.setState({ sort_by });
   };
@@ -81,7 +80,7 @@ export default class Comments extends Component {
 
   render() {
     const { user } = this.props;
-    const { comments, isLoading, submitted, err } = this.state;
+    const { comments, isLoading, err } = this.state;
     if (isLoading) return <LoadingPage />;
     return (
       <section>
@@ -89,24 +88,7 @@ export default class Comments extends Component {
           <ul className={styles.table}>
             {user && (
               <>
-                <p>Add a comment: </p>
-                <Popup
-                  trigger={
-                    <button>
-                      <FontAwesomeIcon
-                        icon="comment-alt"
-                        size="2x"
-                        onClick={this.addComment}
-                        className="comment-alt-icon"
-                      />
-                    </button>
-                  }
-                  position="right center"
-                >
-                  {!submitted && (
-                    <AddComment user={user} addComment={this.addComment} />
-                  )}
-                </Popup>
+                <AddComment user={user} addComment={this.addComment} />
               </>
             )}
             <SortButton comments={comments} sortFunction={this.sortFunction} />
@@ -119,6 +101,7 @@ export default class Comments extends Component {
               deleteComment={this.deleteComment}
               comments={comments}
               user={user}
+              className={styles.tableItem}
             />
           </ul>
         )}

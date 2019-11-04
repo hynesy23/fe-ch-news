@@ -8,7 +8,7 @@ export default function ErrMessage({ err }) {
         <h1 className="error_text">{err.status}</h1>
         <p className="error_text">{err.msg}</p>
       </div>
-      <Link to="/" className="home">
+      <Link to="/articles" className="home">
         Go Home
       </Link>
     </>

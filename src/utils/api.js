@@ -9,8 +9,7 @@ export const fetchAllArticles = (topic, sort_by, author) => {
     })
     .then(({ data }) => {
       return data.articles;
-    })
-    .catch(err => console.log("hello from api"));
+    });
 };
 
 export const fetchArticleById = article_id => {
@@ -58,5 +57,13 @@ export const voteChange = (id, numOfVotes, marker) => {
 };
 
 export const removeComment = comment_id => {
-  return axios.delete(`${baseURL}/Acomments/${comment_id}`);
+  return axios.delete(`${baseURL}/comments/${comment_id}`);
+};
+
+export const insertNewUser = newUser => {
+  return axios.post(`${baseURL}/users`, newUser);
+};
+
+export const insertArticle = article => {
+  return axios.post(`${baseURL}/articles`, article);
 };

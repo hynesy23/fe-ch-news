@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import { navigate } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import styles from "./FilterandSortButton.module.css";
 
 export default class FilterButton extends Component {
@@ -16,47 +16,35 @@ export default class FilterButton extends Component {
     });
   }
 
-  handleClick = event => {
-    const value = event.target.value;
-    console.log(value, "value log");
-    this.setState({ topic: value }, () => {
-      if (value === "all") {
-        navigate(`/articles`);
-      } else {
-        navigate(`/articles/topic/${value}`);
-      }
-    });
-  };
-
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.topic !== this.state.topic) {
-      const { topic } = this.state;
-      this.props.getTopicToFilterBy(topic);
+    if (prevProps.slug !== this.props.slug) {
+      const { slug } = this.props;
+      this.props.getTopicToFilterBy(slug);
     }
   }
 
   render() {
     const { topics } = this.state;
     return (
-      <form>
-        <label>
-          Filter list by
-          <select className={styles.button} onClick={this.handleClick}>
-            <option selected disabled>
-              Please choose a topic to filter by
-            </option>
-            {topics &&
-              topics.map(topic => {
-                return (
-                  <option value={topic.slug} key={topic.slug}>
-                    {topic.slug}
-                  </option>
-                );
-              })}
-            <option value="all">Show All</option>
-          </select>
-        </label>
-      </form>
+      <ul className={styles.nav_list}>
+        {topics.map(topic => {
+          return (
+            <li key={topic.slug}>
+              <Link
+                to={`/articles/topic/${topic.slug}`}
+                className={styles.link}
+              >
+                {topic.slug.toUpperCase()}
+              </Link>
+            </li>
+          );
+        })}
+        <li>
+          <Link to="/articles" className={styles.link}>
+            ALL
+          </Link>
+        </li>
+      </ul>
     );
   }
 }

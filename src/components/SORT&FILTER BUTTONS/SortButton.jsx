@@ -12,7 +12,7 @@ export default function SortButton({ sortFunction, comments }) {
       <form>
         <label>
           Sort by:
-          <select onClick={handleClick}>
+          <select onClick={handleClick} className={styles.sort}>
             <option value="created_at">Most Recent</option>
             <option value="votes">Most Popular</option>
             {!comments && (

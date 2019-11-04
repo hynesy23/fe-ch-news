@@ -11,7 +11,6 @@ export default class Voting extends Component {
 
   handleVote = numOfVotes => {
     const { id, marker } = this.props;
-    console.log(id, marker);
     const { isClicked } = this.state;
     if (!isClicked) {
       this.setState(({ voteCount }) => {

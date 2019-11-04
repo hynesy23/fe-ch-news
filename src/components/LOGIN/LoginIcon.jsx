@@ -7,32 +7,31 @@ export default class LoginIcon extends Component {
   render() {
     const { isLoggedIn, user } = this.props;
     return (
-      <div className={styles.login}>
+      <div>
         {isLoggedIn ? (
-          // <Link to={`login/${user}`}>
-          //   <FontAwesomeIcon
-          //     icon="user-circle"
-          //     size="4x"
-          //     className={styles.login}
-          //   />
-          // </Link>
-          <Link to={`login/${user.username}`}>
-            <img
-              src={user.avatar_url}
-              alt="User profile pic"
-              className={styles.login}
-            />
-            <p className={styles.login_p}>{user.username}</p>
-          </Link>
+          <section className={styles.login}>
+            <Link to={`login/${user.username}`}>
+              <img
+                src={user.avatar_url}
+                alt="User profile pic"
+                className={styles.login}
+              />
+              <p>{user.username}</p>
+            </Link>
+          </section>
         ) : (
-          <section className="login">
+          <section className={styles.login}>
             <Link to="/login">
               <FontAwesomeIcon
                 icon="user"
                 size="4x"
-                className={styles.login}
                 onClick={this.handleClick}
               />
+              <p>
+                <b>
+                  <em>log in</em>
+                </b>
+              </p>
             </Link>
           </section>
         )}

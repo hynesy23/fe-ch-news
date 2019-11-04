@@ -45,7 +45,6 @@ export default class SingleArticle extends Component {
 
   render() {
     const { article, isLoading, err, images } = this.state;
-    if (images) console.log(images, "IMAGES");
     const { user } = this.props;
     if (err) return <ErrMessage err={err} />;
     if (isLoading) return <LoadingPage />;
@@ -56,7 +55,7 @@ export default class SingleArticle extends Component {
             <h1 className={styles.article_title}>{article.title}</h1>
           </li>
           <li className={styles.article_author}>
-            <Link to={`/community/${article.author}`}>{article.author}</Link>{" "}
+            <Link to={`/community/${article.author}`}>{article.author},</Link>{" "}
             <em>
               <Moment fromNow>{article.created_at}</Moment>
             </em>

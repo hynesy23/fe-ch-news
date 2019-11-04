@@ -1,6 +1,5 @@
 .table {
   list-style: none;
-  border: 1px solid rgb(231, 32, 231);
   padding: 0;
   margin: auto;
   text-align: center;
@@ -8,13 +7,36 @@
 }
 
 .tableItem {
-  border-bottom: 2px solid rgb(231, 32, 231);
+  border-top: 1px solid rgb(148, 205, 243);
+
   text-align: center;
   padding: 20px;
 }
 
 .tableItem:hover {
-  border-bottom: 2px solid rgb(231, 32, 231);
-  background-color: rgb(221, 216, 216);
+  border-bottom: 1px solid rgb(148, 205, 243);
+  background-color: rgb(243, 234, 234);
   text-align: center;
+}
+.tableItemBody {
+  text-align: left;
+  padding: 20px;
+}
+
+.addCommentButton {
+  padding: 10px 20px 11px;
+  font-size: 21px;
+  background-color: #59e72e;
+  font-weight: bold;
+  text-shadow: 1px 1px #59e72e;
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border: 1px solid #59e72e;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  color: white;
+  margin-bottom: 40px;
 }

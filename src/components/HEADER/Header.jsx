@@ -4,8 +4,6 @@ import LoginIcon from "../LOGIN/LoginIcon";
 import Navbar from "./NavBar";
 
 export default function Header({ isLoggedIn, user }) {
-  console.log(isLoggedIn, "login from Header");
-
   return (
     <>
       <header className="header">

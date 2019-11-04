@@ -4,6 +4,7 @@ import { Link } from "@reach/router";
 import LoadingPage from "../LoadingPage";
 import styles from "./SingleUser.module.css";
 import ErrMessage from "../ErrMessage";
+import AddAnArticle from "../SINGLE ARTICLE/AddAnArticle";
 
 export default class SingleUser extends Component {
   state = {
@@ -15,17 +16,23 @@ export default class SingleUser extends Component {
 
   componentDidMount() {
     const { username } = this.props;
-    const user = api.fetchSingleUser(username);
-    const articles = api.fetchAllArticles(undefined, undefined, username);
-
-    return Promise.all([user, articles])
-      .then(([user, articles]) => {
-        this.setState({ user, articles, isLoading: false });
+    api
+      .fetchSingleUser(username)
+      .then(user => {
+        this.setState({ user, isLoading: false });
       })
       .catch(err => {
         this.setState({
           err: { status: err.response.status, msg: err.response.data.msg }
         });
+      })
+      .then(() => {
+        return api.fetchAllArticles(undefined, undefined, username);
+      })
+      .then(articles => {
+        if (articles) {
+          this.setState({ articles });
+        }
       });
   }
 
@@ -34,7 +41,7 @@ export default class SingleUser extends Component {
     if (err) return <ErrMessage err={err} />;
     if (isLoading) return <LoadingPage />;
     return (
-      <div>
+      <>
         <h1>{user.username} Profile Page</h1>
         {user && (
           <ul>
@@ -59,7 +66,7 @@ export default class SingleUser extends Component {
           </div>
         )}
         {user && articles && (
-          <>
+          <div className={styles.art_list}>
             <h3>Articles by {user.username}:</h3>
             <ul>
               {articles.map(article => {
@@ -72,9 +79,10 @@ export default class SingleUser extends Component {
                 );
               })}
             </ul>
-          </>
+          </div>
         )}
-      </div>
+        {/* <AddAnArticle user={user} /> */}
+      </>
     );
   }
 }

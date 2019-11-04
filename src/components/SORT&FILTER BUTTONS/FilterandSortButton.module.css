@@ -1,3 +1,112 @@
-.button {
-  margin-left: 10px;
+.nav_list {
+  list-style-type: none;
+  padding-left: 50px;
+}
+
+.nav_list li {
+  display: inline;
+  padding: 0 30px 10px 30px;
+  color: blue;
+  border-bottom: 1px solid rgb(199, 193, 193);
+}
+
+.link {
+  color: black;
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0 0 20px 0;
+}
+
+.link:hover {
+  color: rgb(121, 141, 235);
+  font-size: 20px;
+  background-color: rgb(148, 205, 243);
+}
+
+.sort {
+  margin: 20px 0 20px 0;
+}
+
+@media only screen and (max-width: 360px) {
+  .nav_list {
+    list-style-type: none;
+    padding-left: 10px;
+  }
+
+  .nav_list li {
+    display: inline;
+    padding: 0 0 0 0;
+
+    border-bottom: 1px solid rgb(199, 193, 193);
+    font-size: 15px;
+  }
+
+  .link {
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 5px;
+  }
+}
+
+@media only screen and (max-width: 411px) {
+  .nav_list {
+    list-style-type: none;
+    padding-left: 10px;
+  }
+
+  .nav_list li {
+    display: inline;
+    padding: 0 0 0 0;
+
+    border-bottom: 1px solid rgb(199, 193, 193);
+    font-size: 15px;
+  }
+
+  .link {
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 5px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .nav_list {
+    list-style-type: none;
+    padding-left: 10px;
+    margin-top: 60px;
+  }
+
+  .nav_list li {
+    display: inline;
+    padding: 0 0 0 0;
+    border-bottom: 1px solid rgb(199, 193, 193);
+    font-size: 15px;
+  }
+
+  .link {
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 5px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .nav_list {
+    list-style-type: none;
+    padding-left: 10px;
+  }
+
+  .nav_list li {
+    display: inline;
+    padding: 0 0 0 0;
+    border-bottom: 1px solid rgb(199, 193, 193);
+    font-size: 15px;
+  }
+
+  .link {
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 5px;
+  }
 }

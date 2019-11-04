@@ -13,35 +13,7 @@
 }
 
 .header {
-  background: rgb(148, 205, 243);
-
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 70px;
-  grid-template-areas: "blank title login";
-}
-
-.blank {
-  grid-area: blank;
-}
-
-.title {
-  grid-area: title;
-}
-
-.login {
-  grid-area: login;
-}
-
-.art_list {
-  grid-area: main;
-}
-
-.community_list {
-  background-color: rgb(7, 5, 116);
-}
-
-.footer {
-  grid-area: footer;
+  grid-area: header;
 }
 
 .comment-icon {
@@ -57,16 +29,15 @@
   padding-right: 5px;
 }
 
-.comment-alt-icon {
-}
-
 .text-box {
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 400px;
+  margin-top: 30px;
 }
 
 .thumbs-div {
   padding: 5px 0 5px 5px;
+  text-align: center;
 }
 
 .leftthumb {
@@ -81,7 +52,8 @@
 
 .votesp {
   margin: 0;
-  padding: 5px;
+  padding: 5px 0 0 10px;
+  text-align: center;
 }
 
 .icon_button {
@@ -117,5 +89,9 @@
 }
 
 a {
+  text-align: center;
+}
+
+.home {
   text-align: center;
 }

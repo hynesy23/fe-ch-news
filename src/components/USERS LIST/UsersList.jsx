@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import UserCard from "./UserCard";
 import LoadingPage from "../LoadingPage";
+import styles from "./UserList.module.css";
+import ErrMessage from "../ErrMessage";
+import * as api from "../../utils/api";
 
 export default class UsersList extends Component {
   state = {
@@ -10,10 +13,15 @@ export default class UsersList extends Component {
 
   render() {
     const { users, isLoading } = this.props;
+    const { err } = this.state;
     if (isLoading) return <LoadingPage />;
     return (
       <>
-        <h1>HELLO FROM USER LIST</h1>
+        <h1>Community List</h1>
+        <p className={styles.text}>
+          Below is a list of our current users. You can select each one to see a
+          bit more about them, as well as any articles they have authored.
+        </p>
         <UserCard users={users} />
       </>
     );

@@ -7,13 +7,27 @@
   margin: 10px;
 }
 
-.icon {
-  width: 200px;
+.login_form {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 20px 0;
+}
+
+p {
   text-align: center;
-  display: block;
-  background-color: transparent;
-  border: 1px solid transparent;
-  margin-right: 10px;
-  margin-bottom: 1px;
-  float: right;
+  margin: 0;
+}
+
+.newuser_form {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 20px 0;
+}
+
+@media only screen and (max-width: 360px) {
+  .newuser_form {
+    display: flex;
+    padding: 20px 0 20px 0;
+    flex-direction: column;
+  }
 }
