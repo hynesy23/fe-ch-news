@@ -6,7 +6,7 @@ import styles from "./ArticleList.module.css";
 
 export default function ArticleCard({ article }) {
   return (
-    <Link to={`/articles/${article.article_id}`}>
+    <Link to={`/articles/${article.article_id}`} className={styles.link}>
       <div className={styles.card} key={article.title}>
         <li className={styles.cardTitle}>{article.title}</li>
         <li className={styles.cardOther}>{article.author}</li>

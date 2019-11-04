@@ -1,10 +1,25 @@
 .button_cont {
   text-align: center;
 }
-.log_button {
+.login_button {
   padding: 10px;
   text-align: center;
   margin: 10px;
+  background-color: rgb(53, 155, 53);
+  color: black;
+  border-color: rgb(53, 155, 53);
+}
+
+.link {
+  color: black;
+}
+
+.logout_button {
+  padding: 10px;
+  text-align: center;
+  margin: 10px;
+  background-color: rgb(233, 67, 67);
+  border-color: rgb(233, 67, 67);
 }
 
 .login_form {

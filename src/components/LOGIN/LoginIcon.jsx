@@ -11,12 +11,16 @@ export default class LoginIcon extends Component {
         {isLoggedIn ? (
           <section className={styles.login}>
             <Link to={`login/${user.username}`}>
+              <p>{user.username}</p>
+
               <img
                 src={user.avatar_url}
                 alt="User profile pic"
                 className={styles.login}
               />
-              <p>{user.username}</p>
+              <p>
+                <em>log out</em>
+              </p>
             </Link>
           </section>
         ) : (

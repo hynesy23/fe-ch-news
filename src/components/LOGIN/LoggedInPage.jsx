@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, navigate } from "@reach/router";
 import styles from "./Login.module.css";
+import AddAnArticle from "../SINGLE ARTICLE/AddAnArticle";
 
 export default function LoggedInPage({ user, handleLogOut }) {
   const handleClick = event => {
@@ -20,13 +21,16 @@ export default function LoggedInPage({ user, handleLogOut }) {
         prefer to keep browsing, just click the button below to take you home.
       </p>
       <div className={styles.button_cont}>
-        <button className={styles.log_button}>
-          <Link to="/">Continue</Link>
+        <button className={styles.login_button}>
+          <Link to="/" className={styles.link}>
+            Continue
+          </Link>
         </button>
-        <button className={styles.log_button} onClick={handleClick}>
+        <button className={styles.logout_button} onClick={handleClick}>
           Log Out
         </button>
       </div>
+      <AddAnArticle user={user} />
     </>
   );
 }

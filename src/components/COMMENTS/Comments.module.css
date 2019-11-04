@@ -23,6 +23,11 @@
   padding: 20px;
 }
 
+.comments {
+  text-align: center;
+  font-size: 20px;
+}
+
 .addCommentButton {
   padding: 10px 20px 11px;
   font-size: 21px;

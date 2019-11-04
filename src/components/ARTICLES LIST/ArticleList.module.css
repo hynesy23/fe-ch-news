@@ -2,6 +2,14 @@ h1 {
   text-align: center;
 }
 
+.link {
+  color: black;
+}
+
+.link:hover {
+  color: black;
+}
+
 .cardTable {
   list-style-type: none;
   padding: 0;

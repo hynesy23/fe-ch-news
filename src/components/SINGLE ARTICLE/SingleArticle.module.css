@@ -10,6 +10,14 @@
   padding: 0;
 }
 
+.p_art {
+  padding-bottom: 15px;
+}
+
+.dropdown {
+  margin-bottom: 15px;
+}
+
 .article_author {
   text-align: center;
   padding-top: 10px;
@@ -28,23 +36,50 @@
   line-height: 1.7;
 }
 
+.form_cont {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 40px 0 40px 0;
+}
+
+.post_button {
+  background-color: rgb(53, 155, 53);
+  border: rgb(53, 155, 53);
+}
+
+.submitted {
+  background-color: rgb(53, 155, 53);
+  color: white;
+  width: 400px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.title_box {
+  width: 400px;
+}
+.art_box {
+  height: 150px;
+  width: 400px;
+  margin-top: 30px;
+}
+.art_form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+label {
+  padding-right: 10px;
+}
+
 img {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
   padding-bottom: 35px;
-}
-
-.article_form {
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-}
-
-.new_art {
-  display: flex;
-  flex-direction: column;
 }
 
 @media screen and (max-width: 360px) {

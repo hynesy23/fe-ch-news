@@ -9,6 +9,14 @@
   padding: 0;
 }
 
+.link {
+  color: black;
+}
+
+.link:hover {
+  color: black;
+}
+
 .trail_tag {
   text-align: center;
   font-size: 20px;

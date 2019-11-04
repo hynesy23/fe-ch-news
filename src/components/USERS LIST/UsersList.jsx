@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import UserCard from "./UserCard";
 import LoadingPage from "../LoadingPage";
 import styles from "./UserList.module.css";
-import ErrMessage from "../ErrMessage";
-import * as api from "../../utils/api";
 
 export default class UsersList extends Component {
   state = {
@@ -13,7 +11,6 @@ export default class UsersList extends Component {
 
   render() {
     const { users, isLoading } = this.props;
-    const { err } = this.state;
     if (isLoading) return <LoadingPage />;
     return (
       <>

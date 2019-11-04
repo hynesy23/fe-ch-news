@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import { Link, navigate } from "@reach/router";
+import { Link } from "@reach/router";
 import styles from "./FilterandSortButton.module.css";
 
 export default class FilterButton extends Component {

@@ -91,6 +91,8 @@ export default class Comments extends Component {
                 <AddComment user={user} addComment={this.addComment} />
               </>
             )}
+            <p className={styles.comments}>Comments</p>
+
             <SortButton comments={comments} sortFunction={this.sortFunction} />
             {err && (
               <p className="error_text">
