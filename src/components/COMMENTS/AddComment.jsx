@@ -34,10 +34,9 @@ export default class AddComment extends Component {
           onChange={this.handleChange}
           value={body}
           placeholder="Please enter your comment"
+          required
         />
-        {body && (
-          <button className={styles.addCommentButton}>Add comment</button>
-        )}
+        <button className={styles.addCommentButton}>Add comment</button>
       </form>
     );
   }

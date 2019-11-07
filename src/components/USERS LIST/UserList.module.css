@@ -19,6 +19,15 @@ h1 {
   margin-right: 0;
 }
 
+.user_card:hover {
+  border-bottom: 1px purple solid;
+  padding: 10px;
+  text-align: center;
+  margin-right: 0;
+  background-color: rgb(204, 230, 247);
+  box-shadow: 5px 10px 8px #888888;
+}
+
 @media only screen and (max-width: 360px) {
   .user_list {
     text-align: center;

@@ -1,7 +1,11 @@
 .article_title {
-  text-align: center;
-  padding-bottom: 10px;
+  /* text-align: center;
+  padding-bottom: 10px; */
   border-bottom: 1px solid rgb(173, 170, 170);
+}
+
+h1 {
+  padding: 0;
 }
 
 .article_list {
@@ -83,6 +87,12 @@ img {
 }
 
 @media screen and (max-width: 360px) {
+  .article_title {
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(173, 170, 170);
+  }
+
   .art_body {
     margin: 0 auto;
     font-size: 15px;

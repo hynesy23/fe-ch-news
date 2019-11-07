@@ -15,7 +15,8 @@
 
 .tableItem:hover {
   border-bottom: 1px solid rgb(148, 205, 243);
-  background-color: rgb(243, 234, 234);
+  background-color: rgb(204, 230, 247);
+  box-shadow: 5px 10px 8px #888888;
   text-align: center;
 }
 .tableItemBody {
@@ -28,20 +29,27 @@
   font-size: 20px;
 }
 
+.form {
+  display: flex;
+}
+
 .addCommentButton {
   padding: 10px 20px 11px;
   font-size: 21px;
-  background-color: #59e72e;
+  background-color: rgb(53, 155, 53);
   font-weight: bold;
-  text-shadow: 1px 1px #59e72e;
+  text-shadow: 1px 1px rgb(53, 155, 53);
   border-radius: 100px;
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
-  border: 1px solid #59e72e;
+  border: 1px solid rgb(53, 155, 53);
   cursor: pointer;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
   color: white;
   margin-bottom: 40px;
+}
+
+@media only screen and (max-width: 360px) {
 }

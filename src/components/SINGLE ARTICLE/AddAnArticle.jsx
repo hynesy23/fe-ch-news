@@ -75,7 +75,7 @@ export default class AddAnArticle extends Component {
               className={styles.title_box}
               name="title"
               value={title}
-              placeholder="Please enter the title or your article"
+              placeholder="Please enter the title of your article"
             />
             <TextareaAutosize
               rows={6}

@@ -75,6 +75,16 @@ li a:active {
 }
 
 @media only screen and (max-width: 360px) {
+  /* .header {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 0;
+    font-family: Bernard MT Condensed;
+    letter-spacing: 5px;
+    background-color: rgb(148, 205, 243);
+    grid-area: title;
+    padding: 0;
+  } */
   .login {
     text-align: center;
     display: block;

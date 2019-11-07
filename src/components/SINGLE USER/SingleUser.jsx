@@ -4,7 +4,6 @@ import { Link } from "@reach/router";
 import LoadingPage from "../LoadingPage";
 import styles from "./SingleUser.module.css";
 import ErrMessage from "../ErrMessage";
-import AddAnArticle from "../SINGLE ARTICLE/AddAnArticle";
 
 export default class SingleUser extends Component {
   state = {

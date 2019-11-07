@@ -5,22 +5,13 @@ import styles from "./FilterandSortButton.module.css";
 
 export default class FilterButton extends Component {
   state = {
-    topics: [],
-    topic: "",
-    sort_by: ""
+    topics: []
   };
 
   componentDidMount() {
     api.fetchAllTopics().then(topics => {
       this.setState({ topics });
     });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.slug !== this.props.slug) {
-      const { slug } = this.props;
-      this.props.getTopicToFilterBy(slug);
-    }
   }
 
   render() {

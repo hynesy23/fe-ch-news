@@ -52,7 +52,7 @@ export default class SingleArticle extends Component {
       <>
         <ul className={styles.article_list}>
           <li>
-            <h1 className={styles.article_title}>{article.title}</h1>
+            <h1>{article.title}</h1>
           </li>
           <li className={styles.article_author}>
             <Link to={`/community/${article.author}`}>{article.author},</Link>{" "}
@@ -86,7 +86,11 @@ export default class SingleArticle extends Component {
             className={styles.voting}
           />
         )}
-        <Comments article_id={article.article_id} user={user} />
+        <Comments
+          article_id={article.article_id}
+          comment_count={article.comment_count}
+          user={user}
+        />
       </>
     );
   }

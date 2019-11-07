@@ -30,7 +30,7 @@ export default class Voting extends Component {
 
   render() {
     const { votes } = this.props;
-    const { voteCount, err } = this.state;
+    const { voteCount, err, isClicked } = this.state;
     return (
       <>
         <p className="votesp">
@@ -38,19 +38,23 @@ export default class Voting extends Component {
           {votes + voteCount}
         </p>
         <form className="thumbs-div">
-          <FontAwesomeIcon
-            icon="thumbs-up"
-            className="leftthumb"
-            onClick={() => this.handleVote(1)}
-            size="lg"
-          />
+          {!isClicked && (
+            <FontAwesomeIcon
+              icon="thumbs-up"
+              className="leftthumb"
+              onClick={() => this.handleVote(1)}
+              size="lg"
+            />
+          )}
 
-          <FontAwesomeIcon
-            icon="thumbs-down"
-            className="rightthumb"
-            onClick={() => this.handleVote(-1)}
-            size="lg"
-          />
+          {!isClicked && (
+            <FontAwesomeIcon
+              icon="thumbs-down"
+              className="rightthumb"
+              onClick={() => this.handleVote(-1)}
+              size="lg"
+            />
+          )}
         </form>
         {err && (
           <p className="error_text">{err.status}: Oops, an error occurred!</p>

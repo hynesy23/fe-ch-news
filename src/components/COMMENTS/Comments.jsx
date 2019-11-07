@@ -79,11 +79,11 @@ export default class Comments extends Component {
   };
 
   render() {
-    const { user } = this.props;
+    const { user, comment_count } = this.props;
     const { comments, isLoading, err } = this.state;
     if (isLoading) return <LoadingPage />;
     return (
-      <section>
+      <section className={styles.form}>
         {comments && (
           <ul className={styles.table}>
             {user && (
@@ -91,9 +91,14 @@ export default class Comments extends Component {
                 <AddComment user={user} addComment={this.addComment} />
               </>
             )}
-            <p className={styles.comments}>Comments</p>
+            <p className={styles.comments}>Comments ({comment_count})</p>
 
-            <SortButton comments={comments} sortFunction={this.sortFunction} />
+            {comments.length > 0 && (
+              <SortButton
+                comments={comments}
+                sortFunction={this.sortFunction}
+              />
+            )}
             {err && (
               <p className="error_text">
                 {err.status}: Oops, something went wrong

@@ -8,6 +8,7 @@
   background-color: rgb(53, 155, 53);
   color: black;
   border-color: rgb(53, 155, 53);
+  cursor: pointer;
 }
 
 .link {
@@ -20,6 +21,7 @@
   margin: 10px;
   background-color: rgb(233, 67, 67);
   border-color: rgb(233, 67, 67);
+  cursor: pointer;
 }
 
 .login_form {

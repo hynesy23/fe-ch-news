@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./FilterandSortButton.module.css";
 
 export default function SortButton({ sortFunction, comments }) {
-  const handleClick = event => {
+  const handleChange = event => {
     const sort_by = event.target.value;
     sortFunction(sort_by);
   };
@@ -12,7 +12,7 @@ export default function SortButton({ sortFunction, comments }) {
       <form>
         <label>
           Sort by:
-          <select onClick={handleClick} className={styles.sort}>
+          <select onChange={handleChange} className={styles.sort}>
             <option value="created_at">Most Recent</option>
             <option value="votes">Most Popular</option>
             {!comments && (

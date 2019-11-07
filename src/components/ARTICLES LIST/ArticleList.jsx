@@ -22,18 +22,19 @@ export default class ArticleList extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (
-      prevState.topic !== this.state.topic ||
+      prevProps.slug !== this.props.slug ||
       prevState.sort_by !== this.state.sort_by
     ) {
-      let { topic, sort_by } = this.state;
-      this.getArticles(topic, sort_by);
+      const { slug, sort_by } = this.state;
+      this.getArticles(slug, sort_by);
     }
   }
 
   getArticles = (filter, sort) => {
-    const { topic, sort_by } = this.state;
+    const { sort_by } = this.state;
+    const { slug } = this.props;
     api
-      .fetchAllArticles(topic, sort_by)
+      .fetchAllArticles(slug, sort_by)
       .then(articles => {
         this.setState({ articles, isLoading: false });
       })
@@ -45,10 +46,6 @@ export default class ArticleList extends Component {
           }
         });
       });
-  };
-
-  getTopicToFilterBy = topic => {
-    this.setState({ topic });
   };
 
   sortFunction = sort_by => {
