@@ -49,6 +49,7 @@ export default class LoginPage extends Component {
       .insertNewUser(newUserObj)
       .then(() => {
         navigate(`/login/${new_username}`);
+        this.setState({ isLoggedIn: true });
       })
       .catch(err => {
         this.setState({
@@ -90,8 +91,8 @@ export default class LoginPage extends Component {
         <div>
           <h1>Welcome to the login page</h1>
           <p>
-            Please note you will need to login to submit articles or comments,
-            or should you wish to vote or comment.
+            Please note you will need to login to submit articles, or should you
+            wish to vote or comment.
           </p>
           <p>Please login by entering you username below.</p>
           <form onSubmit={this.handleUserLogin} className={styles.login_form}>

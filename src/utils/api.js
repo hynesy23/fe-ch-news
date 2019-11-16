@@ -65,6 +65,5 @@ export const insertNewUser = newUser => {
 };
 
 export const insertArticle = article => {
-  console.log(article, "article log from api");
   return axios.post(`${baseURL}/articles`, article);
 };

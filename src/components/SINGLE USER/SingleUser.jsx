@@ -80,7 +80,6 @@ export default class SingleUser extends Component {
             </ul>
           </div>
         )}
-        {/* <AddAnArticle user={user} /> */}
       </>
     );
   }

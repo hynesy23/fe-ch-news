@@ -96,7 +96,6 @@ class App extends Component {
               className="login"
             />
           )}
-          {/* Tried removing ternary but when url changed to /logout after pressng logout button the 'LoggedInPage' tried to render instead of the LoggedOutPage */}
 
           <LoggedOutPage path="/logout" />
           <ArticleList path="/" className="art_list" />
