@@ -77,6 +77,11 @@ export default class SingleArticle extends Component {
           </li>
           <li className={styles.art_body}>{article.body}</li>
         </ul>
+        {!user && (
+          <p className={styles.login_p}>
+            <em>Please log in to vote or leave a comment</em>
+          </p>
+        )}
         {user && user.username !== article.author && (
           <Voting
             id={article.article_id}

@@ -11,10 +11,8 @@ export default function LoggedInPage({ user, handleLogOut }) {
   return (
     <>
       <h1>Hi {user.username}, welcome to your profile page</h1>
-      <p>
-        From here, you can add an article to an existing topic, or even create a
-        topic of your own!
-      </p>
+      <p>From here, you can add an article or continue browsing.</p>
+      <br />
       <p>
         If you'd like to view your profile, just click{" "}
         <Link to={`/community/${user.username}`}>here</Link>, or, If you'd

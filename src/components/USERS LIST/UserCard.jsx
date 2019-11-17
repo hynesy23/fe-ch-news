@@ -9,21 +9,19 @@ export default function UserCard({ users }) {
         {users &&
           users.map(user => {
             return (
-              <div className={styles.user_card} key={user.username}>
-                <li>
-                  <img
-                    src={user.avatar_url}
-                    alt="user pic"
-                    className="profile_pic"
-                  />
-                </li>
-                <li>
-                  <Link to={`/community/${user.username}`}>
-                    {user.username}
-                  </Link>
-                </li>
-                <li>{user.name}</li>
-              </div>
+              <Link to={`/community/${user.username}`} key={user.username}>
+                <div className={styles.user_card} key={user.username}>
+                  <li>
+                    <img
+                      src={user.avatar_url}
+                      alt="user pic"
+                      className="profile_pic"
+                    />
+                  </li>
+                  <li>{user.username}</li>
+                  <li>{user.name}</li>
+                </div>
+              </Link>
             );
           })}
       </ul>

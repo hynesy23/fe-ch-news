@@ -16,7 +16,7 @@ export default class LoginIcon extends Component {
               <img
                 src={user.avatar_url}
                 alt="User profile pic"
-                className={styles.login}
+                className={styles.login_icon}
               />
               <p>
                 <em>log out</em>

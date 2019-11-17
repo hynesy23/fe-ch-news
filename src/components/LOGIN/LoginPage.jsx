@@ -48,7 +48,7 @@ export default class LoginPage extends Component {
     api
       .insertNewUser(newUserObj)
       .then(() => {
-        navigate(`/login/${new_username}`);
+        navigate("/newuser");
         this.setState({ isLoggedIn: true });
       })
       .catch(err => {

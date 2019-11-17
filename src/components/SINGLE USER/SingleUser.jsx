@@ -70,7 +70,7 @@ export default class SingleUser extends Component {
             <ul>
               {articles.map(article => {
                 return (
-                  <li key={article.id}>
+                  <li key={article.article.id}>
                     <Link to={`/articles/${article.article_id}`}>
                       {article.title}
                     </Link>

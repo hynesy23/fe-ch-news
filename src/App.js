@@ -12,6 +12,7 @@ import LoginPage from "./components/LOGIN/LoginPage";
 import LoggedInPage from "./components/LOGIN/LoggedInPage";
 import LoggedOutPage from "./components/LOGIN/LoggedOutPage";
 import ErrMessage from "./components/ErrMessage";
+import UserCreated from "./components/LOGIN/UserCreated";
 
 class App extends Component {
   state = {
@@ -102,6 +103,7 @@ class App extends Component {
           <ArticleList path="/articles" className="art_list" />
           <ArticleList path="/articles/topic/:slug" className="art_list" />
           <UsersList path="/community" users={users} />
+          <UserCreated path="/newuser" />
           <SingleUser path="/community/:username" />
           <SingleArticle path="/articles/:article_id" user={user} />
         </Router>

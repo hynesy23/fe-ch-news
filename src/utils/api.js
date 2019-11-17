@@ -61,7 +61,10 @@ export const removeComment = comment_id => {
 };
 
 export const insertNewUser = newUser => {
-  return axios.post(`${baseURL}/users`, newUser);
+  // console.log(newUser, "new user api log");
+  return axios.post(`${baseURL}/users`, newUser).then(({ data }) => {
+    console.log(data.user);
+  });
 };
 
 export const insertArticle = article => {

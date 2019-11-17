@@ -1,27 +1,81 @@
 .button_cont {
   text-align: center;
 }
+
 .login_button {
-  padding: 10px;
-  text-align: center;
-  margin: 10px;
+  padding: 10px 30px 10px 30px;
   background-color: rgb(53, 155, 53);
-  color: black;
-  border-color: rgb(53, 155, 53);
+  font-weight: bold;
+  text-shadow: 1px 1px rgb(53, 155, 53);
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border: 1px solid rgb(53, 155, 53);
   cursor: pointer;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  color: white;
+  margin: 10px;
 }
 
-.link {
-  color: black;
+.login_button:hover {
+  padding: 10px 30px 10px 30px;
+  background-color: rgb(41, 119, 41);
+  font-weight: bold;
+  text-shadow: 1px 1px rgb(53, 155, 53);
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border: 1px solid rgb(53, 155, 53);
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  color: white;
+  margin: 10px;
 }
 
 .logout_button {
-  padding: 10px;
-  text-align: center;
-  margin: 10px;
+  padding: 10px 30px 10px 30px;
   background-color: rgb(233, 67, 67);
-  border-color: rgb(233, 67, 67);
+  font-weight: bold;
+  text-shadow: 1px 1px rgb(233, 67, 67);
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border: 1px solid rgb(233, 67, 67);
   cursor: pointer;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  color: white;
+  margin: 10px;
+}
+
+.logout_button:hover {
+  padding: 10px 30px 10px 30px;
+  background-color: rgb(192, 54, 54);
+  font-weight: bold;
+  text-shadow: 1px 1px rgb(233, 67, 67);
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border: 1px solid rgb(233, 67, 67);
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  color: white;
+  margin: 10px;
+}
+
+.link {
+  color: white;
+}
+
+.link:hover {
+  color: white;
 }
 
 .login_form {

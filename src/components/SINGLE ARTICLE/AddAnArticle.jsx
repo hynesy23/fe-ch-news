@@ -62,6 +62,7 @@ export default class AddAnArticle extends Component {
                 name="topic"
                 onChange={this.handleChange}
                 className={styles.dropdown}
+                required
               >
                 <option value=""></option>
                 <option value="coding">Coding</option>
@@ -75,6 +76,7 @@ export default class AddAnArticle extends Component {
               className={styles.title_box}
               name="title"
               value={title}
+              required
               placeholder="Please enter the title of your article"
             />
             <TextareaAutosize
@@ -83,18 +85,17 @@ export default class AddAnArticle extends Component {
               onChange={this.handleChange}
               name="body"
               value={body}
+              required
               placeholder="Please create your article here"
             />
-            {body && (
-              <button type="submit" className={styles.post_button}>
-                Post Article
-              </button>
-            )}
+            <button type="submit" className={styles.post_button}>
+              Post Article
+            </button>
           </form>
         )}
         {submitted && (
           <p className={styles.submitted}>
-            Thank you. Your article has been submitted
+            Thank you. Your article has been posted
           </p>
         )}
       </div>
