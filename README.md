@@ -1,68 +1,87 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CH-News
 
-## Available Scripts
+This is a single page web application built with React.js. It is a news board website similar to Reddit. It displays a variety of articles which you can upvote/downvote on, as well add comments and your own articles. Users need to login to vote, and post comments/articles. They can also delete their comments. This project utilizes a RESTful API.
 
-In the project directory, you can run:
+A live version of this project is hosted on Netlify and accessible via this link: https://ch-news.netlify.com.
 
-### `npm start`
+A live version of the backend is accessible with this link, the source code for the backend is also available here.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting Started
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The instructions below will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To run this locally you will need Node.js and git installated on your system.
 
-### `npm run build`
+First check if you have node.js installed with below command:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+node -v
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+If you do not have Node.js installed or command above does not work please follow the instructions on this guide: https://nodejs.org/en/download/package-manager/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Finally, check if git is installed on your machine enter the following command on your terminal:
 
-### `npm run eject`
+```bash
+git --version
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+If you do not have git installed on your machine please follow this guide.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation/Running local version
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Now that the prerequisites have been installed you can now install and run this application.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+First you will need to clone this repo, to do so use the command line to navigate to your preferred directory on your local machine and enter the following command on the terminal:
 
-## Learn More
+```bash
+git clone https://github.com/hynesy23/fe-ch-news
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Navigate inside the folder and install all dependencies by entering the following commands on your terminal window:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+cd ch-news
 
-### Code Splitting
+npm install
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Finally to run the webapp enter the following command in your terminal window:
 
-### Analyzing the Bundle Size
+```
+npm start
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+This will run the server on port 3000 and open the webpage in your browser or you can navigate to http://localhost:3000 in your browser manually.
 
-### Making a Progressive Web App
+### Using the site
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+On loading the web app you are not logged in as anyone, however you are free to browse the website, view articles, comments, and a list of users. In order to vote or post comments or articles, you need to either log in as an existing user, or create a new user. You can vote on comments and articles and delete comments that the current user posted.
 
-### Advanced Configuration
+You can login or create user by clicking the 'login' icon in the top righthand corner.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### Built with
 
-### Deployment
+> Runtime environment: Node.js
+> React bootstrap: Create React App
+> HTTP client: axios
+> React Routing: reach/router
+> Date Library: react-moment
+> Loading Animations: sematic-ui-react
+> Icons: Font Awesome
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Author
 
-### `npm run build` fails to minify
+Cillian Hynes
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Contributing
+
+This project is a portfolio piece and is not accepting contributions.
+
+## Acknowledgments
+
+This website was created as part of a final project at Northcoders Coding Bootcamp. A big thank you to everyone at Northcoders.
+
+https://northcoders.com/
