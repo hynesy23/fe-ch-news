@@ -2,9 +2,7 @@
 
 This is a single page web application built with React.js. It is a news board website similar to Reddit. It displays a variety of articles which you can upvote/downvote on, as well add comments and your own articles. Users need to login to vote, and post comments/articles. They can also delete their comments. This project utilizes a RESTful API.
 
-A live version of this project is hosted on Netlify and accessible via this link: https://ch-news.netlify.com.
-
-A live version of the backend is accessible with this link, the source code for the backend is also available here.
+A live version of this project is hosted on Netlify and accessible via this link: https://ch-news.netlify.com, and the source code for the backend is available here: https://github.com/hynesy23/be-ch-news
 
 ## Getting Started
 
@@ -58,19 +56,19 @@ This will run the server on port 3000 and open the webpage in your browser or yo
 
 ### Using the site
 
-On loading the web app you are not logged in as anyone, however you are free to browse the website, view articles, comments, and a list of users. In order to vote or post comments or articles, you need to either log in as an existing user, or create a new user. You can vote on comments and articles and delete comments that the current user posted.
+On loading the web app you are not logged in as anyone, however you are free to browse the website, view articles, comments, and a list of users. In order to vote or post comments or articles, you need to either log in as an existing user, or create a new user. As well as posting articles and comments, you can also vote on them, as well as being able to delete comments that the current user posted.
 
 You can login or create user by clicking the 'login' icon in the top righthand corner.
 
 ### Built with
 
-> Runtime environment: Node.js
-> React bootstrap: Create React App
-> HTTP client: axios
-> React Routing: reach/router
-> Date Library: react-moment
-> Loading Animations: sematic-ui-react
-> Icons: Font Awesome
+- Runtime environment: Node.js
+- React bootstrap: Create React App
+- HTTP client: axios
+- React Routing: reach/router
+- Date Library: react-moment
+- Loading Animations: sematic-ui-react
+- Icons: Font Awesome
 
 ## Author
 
